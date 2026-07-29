@@ -3,13 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Anton } from "next/font/google";
-
-const headlineFont = Anton({
-  subsets: ["latin"],
-  weight: "400",
-  display: "swap",
-});
+import { ArrowLeft, ArrowRight, Search, Menu, X } from "lucide-react";
+import { superGrotesk, prompt } from "@/lib/fonts";
+import Button from "@/components/common/button";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -57,62 +53,17 @@ const AUTOPLAY_MS = 6000;
 
 function Logo() {
   return (
-    <Link href="/" className="relative block h-16 w-40" aria-label="Edinborough home">
+    <Link href="/" className="relative block h-14 w-36 -ml-7 -mt-2" aria-label="Edinborough home">
       {/* Drop your real logo file in /public and point this at it. */}
       <Image
         src="/images/home/logo1.png"
         alt="Edinborough"
         fill
         priority
-        sizes="160px"
+        sizes="144px"
         className="object-contain object-left"
       />
     </Link>
-  );
-}
-
-function SearchIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5">
-      <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth={2} />
-      <path d="M21 21l-4.3-4.3" stroke="currentColor" strokeWidth={2} strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function MenuIcon({ open }: { open: boolean }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5">
-      {open ? (
-        <path
-          d="M6 6l12 12M18 6L6 18"
-          stroke="currentColor"
-          strokeWidth={2}
-          strokeLinecap="round"
-        />
-      ) : (
-        <path
-          d="M3 6h18M3 12h18M3 18h18"
-          stroke="currentColor"
-          strokeWidth={2}
-          strokeLinecap="round"
-        />
-      )}
-    </svg>
-  );
-}
-
-function ArrowIcon({ direction }: { direction: "left" | "right" }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4 sm:h-5 sm:w-5">
-      <path
-        d={direction === "left" ? "M15 6l-6 6 6 6" : "M9 6l6 6-6 6"}
-        stroke="currentColor"
-        strokeWidth={2}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
   );
 }
 
@@ -137,7 +88,7 @@ export default function HomeHero() {
   }, [current]);
 
   return (
-    <section className="relative h-[600px] w-full overflow-hidden bg-black sm:h-[720px] lg:h-[820px]">
+    <section className="relative h-[85vh] min-h-[480px] w-full overflow-hidden bg-black sm:min-h-[560px] lg:min-h-[600px]">
       {/* Slides */}
       {slides.map((slide, index) => (
         <div
@@ -179,12 +130,12 @@ export default function HomeHero() {
         <div className="flex items-center justify-between px-6 py-4 sm:px-10 lg:px-12">
           <Logo />
 
-          <nav className="hidden items-center gap-8 lg:flex">
+          <nav className={`${superGrotesk.className} hidden items-center gap-7 lg:flex`}>
             {navLinks.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
-                className={`text-sm font-bold uppercase tracking-wide transition-colors ${
+                className={`text-xs uppercase tracking-wide transition-colors ${
                   link.label === "Home"
                     ? "text-[#E2201B]"
                     : "text-white hover:text-white/70"
@@ -197,7 +148,7 @@ export default function HomeHero() {
 
           <div className="flex items-center gap-6 text-white">
             <button type="button" aria-label="Search" className="hover:text-white/70">
-              <SearchIcon />
+              <Search className="h-5 w-5" strokeWidth={2} />
             </button>
             <button
               type="button"
@@ -206,20 +157,26 @@ export default function HomeHero() {
               onClick={() => setMobileMenuOpen((open) => !open)}
               className="hover:text-white/70"
             >
-              <MenuIcon open={mobileMenuOpen} />
+              {mobileMenuOpen ? (
+                <X className="h-5 w-5" strokeWidth={2} />
+              ) : (
+                <Menu className="h-5 w-5" strokeWidth={2} />
+              )}
             </button>
           </div>
         </div>
 
         {/* Mobile nav panel */}
         {mobileMenuOpen && (
-          <nav className="flex flex-col gap-1 bg-black/90 px-6 py-4 lg:hidden">
+          <nav
+            className={`${superGrotesk.className} flex flex-col gap-1 bg-black/90 px-6 py-4 lg:hidden`}
+          >
             {navLinks.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`py-2 text-sm font-bold uppercase tracking-wide ${
+                className={`py-2 text-xs uppercase tracking-wide ${
                   link.label === "Home" ? "text-[#E2201B]" : "text-white"
                 }`}
               >
@@ -231,34 +188,24 @@ export default function HomeHero() {
       </header>
 
       {/* Hero copy */}
-      <div className="absolute inset-x-0 bottom-0 z-10 px-6 pb-20 sm:px-12 sm:pb-24 lg:px-24 lg:pb-28">
+      <div className="absolute inset-x-0 bottom-0 z-10 px-6 pb-14 sm:px-12 sm:pb-16 lg:px-24 lg:pb-20">
         <h1
-          className={`${headlineFont.className} max-w-4xl text-[40px] uppercase leading-[0.95] text-white sm:text-6xl lg:text-[72px] xl:text-[80px]`}
+          className={`${superGrotesk.className} max-w-4xl text-[32px] uppercase leading-[0.95] text-white sm:text-5xl lg:text-6xl xl:text-[64px]`}
         >
           The Taste Behind
           <br />
           Sri Lanka&apos;s Favourite Meals
         </h1>
 
-        <p className="mt-6 max-w-3xl text-sm text-white/90 sm:text-base lg:text-lg">
+        <p className={`${prompt.className} mt-5 max-w-3xl text-sm text-white/90 sm:text-base`}>
           For 52 years, Edinborough has helped families, chefs, restaurants,
           and food businesses create memorable dining experiences through
           authentic sauces, condiments, and food products.
         </p>
 
-        <div className="mt-8 flex flex-wrap gap-4">
-          <Link
-            href="/our-products"
-            className="bg-[#0845BA] px-10 py-4 text-sm font-bold uppercase tracking-widest text-white transition-colors hover:bg-[#093a99]"
-          >
-            Explore Products
-          </Link>
-          <Link
-            href="/our-story"
-            className="bg-white px-10 py-4 text-sm font-bold uppercase tracking-widest text-neutral-900 transition-colors hover:bg-neutral-200"
-          >
-            Our Story
-          </Link>
+        <div className="mt-6 flex flex-wrap gap-4">
+          <Button text="Explore Products" color="blue" href="/our-products" />
+          <Button text="Our Story" color="white" href="/our-story" />
         </div>
       </div>
 
@@ -267,17 +214,17 @@ export default function HomeHero() {
         type="button"
         aria-label="Previous slide"
         onClick={goPrev}
-        className="absolute left-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/50 text-white transition-colors hover:border-white sm:left-8 sm:h-12 sm:w-12"
+        className="absolute left-4 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/50 text-white transition-colors hover:border-white sm:left-8 sm:h-10 sm:w-10"
       >
-        <ArrowIcon direction="left" />
+        <ArrowLeft className="h-4 w-4" strokeWidth={2} />
       </button>
       <button
         type="button"
         aria-label="Next slide"
         onClick={goNext}
-        className="absolute right-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/50 text-white transition-colors hover:border-white sm:right-8 sm:h-12 sm:w-12"
+        className="absolute right-4 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/50 text-white transition-colors hover:border-white sm:right-8 sm:h-10 sm:w-10"
       >
-        <ArrowIcon direction="right" />
+        <ArrowRight className="h-4 w-4" strokeWidth={2} />
       </button>
 
       {/* Dot indicators */}

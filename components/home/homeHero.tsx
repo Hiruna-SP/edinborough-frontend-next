@@ -135,7 +135,7 @@ export default function HomeHero() {
               <Link
                 key={link.label}
                 href={link.href}
-                className={`text-xs uppercase tracking-wide transition-colors ${
+                className={`text-[13px] uppercase tracking-wide transition-colors ${
                   link.label === "Home"
                     ? "text-[#E2201B]"
                     : "text-white hover:text-white/70"
@@ -190,14 +190,14 @@ export default function HomeHero() {
       {/* Hero copy */}
       <div className="absolute inset-x-0 bottom-0 z-10 px-6 pb-14 sm:px-12 sm:pb-16 lg:px-24 lg:pb-20">
         <h1
-          className={`${superGrotesk.className} max-w-4xl text-[32px] uppercase leading-[0.95] text-white sm:text-5xl lg:text-6xl xl:text-[64px]`}
+          className={`${superGrotesk.className} max-w-4xl text-[32px] uppercase leading-[1] text-white sm:text-5xl lg:text-6xl xl:text-[82px]`}
         >
           The Taste Behind
           <br />
           Sri Lanka&apos;s Favourite Meals
         </h1>
 
-        <p className={`${prompt.className} mt-5 max-w-3xl text-sm text-white/90 sm:text-base`}>
+        <p className={`${prompt.className} mt-5 max-w-7xl text-[8px] text-white/90 sm:text-sm`}>
           For 52 years, Edinborough has helped families, chefs, restaurants,
           and food businesses create memorable dining experiences through
           authentic sauces, condiments, and food products.
@@ -228,7 +228,7 @@ export default function HomeHero() {
       </button>
 
       {/* Dot indicators */}
-      <div className="absolute inset-x-0 bottom-6 z-10 flex items-center justify-center gap-2">
+      <div className="absolute inset-x-0 bottom-6 z-10 flex items-center justify-center gap-3">
         {slides.map((slide, index) => (
           <button
             key={slide.src}

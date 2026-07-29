@@ -35,7 +35,7 @@ export default function Button({
   type = "button",
   className = "",
 }: ButtonProps) {
-  const classes = `${prompt.className} inline-flex items-center justify-center px-6 py-2.5 text-xs font-semibold uppercase tracking-widest transition-colors ${colorStyles[color]} ${className}`;
+  const classes = `${prompt.className} inline-flex items-center justify-center px-6 py-3 text-[10px] font-semibold uppercase tracking-widest transition-colors ${colorStyles[color]} ${className}`;
 
   if (href) {
     return (

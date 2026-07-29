@@ -25,7 +25,12 @@ type Slide =
   | { type: "image"; src: string; alt: string }
   | { type: "video"; src: string; poster?: string; alt: string };
 
-const slides: Slide[] = [
+const slides: Slide[] = [{
+    type: "video",
+    src: "/videos/v1.mp4",
+    poster: "/images/hero/slide-3-poster.jpg",
+    alt: "Behind the scenes at the Edinborough factory",
+  },
   {
     type: "image",
     src: "/images/home/heroimg1.png",
@@ -36,12 +41,7 @@ const slides: Slide[] = [
     src: "/images/home/heroimg2.png",
     alt: "Edinborough products lined up on a kitchen counter",
   },
-  // {
-  //   type: "video",
-  //   src: "/videos/hero/slide-3.mp4",
-  //   poster: "/images/hero/slide-3-poster.jpg",
-  //   alt: "Behind the scenes at the Edinborough factory",
-  // },
+  
   {
     type: "image",
     src: "/images/home/heroimg3.png",
@@ -49,7 +49,7 @@ const slides: Slide[] = [
   },
 ];
 
-const AUTOPLAY_MS = 6000;
+const AUTOPLAY_MS = 5000;
 
 function Logo() {
   return (

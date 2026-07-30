@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import { Alex_Brush } from "next/font/google";
+import { prompt } from "@/lib/fonts";
+import Button from "@/components/common/button";
 
-// Brush-script font used for the "Edinborough" wordmark.
-// If your project already loads fonts globally (e.g. in app/layout.tsx),
-// you can move this import there instead and just reuse the className.
+// Brush-script font used only for the "Edinborough" wordmark — kept
+// separate from the site's Prompt/SuperGroteskA fonts since it's a
+// decorative logo treatment, not body copy.
 const logoFont = Alex_Brush({
   subsets: ["latin"],
   weight: "400",
@@ -76,15 +78,17 @@ function FooterLinkColumn({
 }) {
   return (
     <div>
-      <h3 className="text-sm font-semibold tracking-wide text-white">
+      <h3
+        className={`${prompt.className} text-sm font-semibold tracking-wide text-white`}
+      >
         {title}
       </h3>
-      <ul className="mt-6 space-y-2">
+      <ul className="mt-7 space-y-3">
         {links.map((link) => (
           <li key={link.label}>
             <a
               href={link.href}
-              className={`text-sm transition-colors hover:text-white ${
+              className={`${prompt.className} text-sm font-normal transition-colors hover:text-white ${
                 link.active ? "text-red-500" : "text-neutral-300"
               }`}
             >
@@ -110,7 +114,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-black text-white">
-      <div className="mx-auto max-w-7xl px-4 pt-8 sm:px-6">
+      <div className="mx-auto max-w-[1600px] px-3 pt-8 sm:px-4 lg:px-6">
         {/* Wordmark */}
         <div className="flex justify-center">
           <span
@@ -120,12 +124,14 @@ export default function Footer() {
           </span>
         </div>
 
-        {/* Content row — columns hug their own content, spaced with a
-           consistent gap, rather than stretching into an even grid. */}
-        <div className="mt-12 flex flex-col flex-wrap gap-x-36 gap-y-10 pb-12 sm:mt-[70px] lg:flex-row lg:items-start">
+        {/* Content row — a grid (not flex-wrap) so the three nav columns
+           are guaranteed to sit on the same row and the same top edge as
+           the newsletter block, at any width down to lg. Link columns are
+           auto-sized so they hug their own content instead of stretching. */}
+        <div className="mt-20 grid grid-cols-1 gap-y-10 pb-12 sm:mt-28 lg:mt-32 lg:grid-cols-[minmax(0,460px)_repeat(3,auto)] lg:items-start lg:gap-x-40 lg:justify-start">
           {/* Newsletter */}
           <div className="max-w-[460px]">
-            <p className="max-w-[400px] text-sm text-neutral-300">
+            <p className={`${prompt.className} max-w-[400px] text-sm font-normal text-neutral-300`}>
               For the latest Edinborough recipes, tips, news, views and
               priority notice for competitions and events, please subscribe
               to our email newsletter.
@@ -133,7 +139,7 @@ export default function Footer() {
 
             <form
               onSubmit={handleSubscribe}
-              className="mt-9 flex items-center gap-4"
+              className="mt-11 flex items-center gap-4"
             >
               <div className="w-full max-w-[300px] border-b border-neutral-600 pb-2">
                 <label htmlFor="footer-email" className="sr-only">
@@ -146,18 +152,13 @@ export default function Footer() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Sign Up Now"
-                  className="w-full bg-transparent text-sm text-white placeholder:text-neutral-400 focus:outline-none"
+                  className={`${prompt.className} w-full bg-transparent text-sm font-normal text-white placeholder:text-neutral-400 focus:outline-none`}
                 />
               </div>
-              <button
-                type="submit"
-                className="shrink-0 rounded-sm bg-white px-6 py-2.5 text-sm font-medium text-black transition-opacity hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
-              >
-                Subscribe
-              </button>
+              <Button text="Subscribe" color="white" type="submit" />
             </form>
             {status === "submitted" && (
-              <p className="mt-2 text-xs text-neutral-400">
+              <p className={`${prompt.className} mt-2 text-xs font-normal text-neutral-400`}>
                 Thanks — you&apos;re on the list.
               </p>
             )}
@@ -201,12 +202,12 @@ export default function Footer() {
                 <TikTokIcon />
               </a>
             </div>
-            <span className="ml-10 text-xs text-neutral-400">
+            <span className={`${prompt.className} ml-10 text-xs font-normal text-neutral-400`}>
               &copy;2026 Edinborough Pvt Ltd. All rights reserved.
             </span>
           </div>
 
-          <div className="flex items-center gap-4 text-xs text-neutral-400">
+          <div className={`${prompt.className} flex items-center gap-5 text-xs font-normal text-neutral-400`}>
             <a href="/privacy-policy" className="hover:text-white">
               Privacy & Policy
             </a>
@@ -215,7 +216,7 @@ export default function Footer() {
             </a>
           </div>
 
-          <p className="text-xs text-neutral-500">
+          <p className={`${prompt.className} text-xs font-normal text-neutral-500`}>
             Design &amp; Developed by{" "}
             <span className="font-semibold text-neutral-300">
               Archmage Solutions Pvt Ltd

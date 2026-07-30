@@ -1,3 +1,4 @@
+import { superGrotesk } from "@/lib/fonts";
 import { Anton } from "next/font/google";
 
 const headlineFont = Anton({
@@ -20,15 +21,15 @@ export default function StatsBar() {
         {stats.map((stat, index) => (
           <div key={stat.label} className="flex items-center sm:flex-1">
             {index > 0 && (
-              <span className="mr-4 hidden h-16 w-px bg-[#FF0000] sm:mr-6 sm:block sm:h-20 lg:h-24" />
+              <span className="mr-4 hidden h-16 w-[2px] bg-[#FF0000] sm:mr-6 sm:block sm:h-20 lg:h-24" />
             )}
             <div className="flex flex-1 flex-col items-center text-center">
               <span
-                className={`${headlineFont.className} text-5xl leading-none text-white sm:text-6xl lg:text-7xl`}
+                className={`${superGrotesk.className} text-5xl leading-none text-white sm:text-6xl lg:text-7xl`}
               >
                 {stat.value}
               </span>
-              <span className="mt-3 text-sm font-bold uppercase tracking-wide text-white sm:text-base">
+              <span className={`${superGrotesk.className} mt-3 text-lg font-normal uppercase tracking-wide text-white sm:text-2xl`}>
                 {stat.label}
               </span>
             </div>

@@ -1,11 +1,5 @@
 import Image from "next/image";
-import { Anton } from "next/font/google";
-
-const headlineFont = Anton({
-  subsets: ["latin"],
-  weight: "400",
-  display: "swap",
-});
+import { superGrotesk, prompt } from "@/lib/fonts";
 
 export default function SoyaSauceHero() {
   return (
@@ -27,24 +21,29 @@ export default function SoyaSauceHero() {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent sm:from-black/75 sm:via-black/20" />
 
       {/* Text block */}
-      <div className="absolute inset-y-0 left-0 z-10 flex w-full max-w-xl flex-col justify-center gap-4 px-6 sm:px-10 lg:px-14">
-        <h1 className={`${headlineFont.className} leading-[1.05]`}>
-          <span className="block text-4xl text-white sm:text-5xl lg:text-[46px]">
+      <div className="absolute inset-y-0 left-0 top-22 z-10 flex w-full max-w-4xl flex-col justify-center gap-2 px-6">
+        <h1 className={`${superGrotesk.className} font-normal leading-[1]`}>
+          <span className="block text-3xl text-white sm:text-4xl lg:text-[85px]">
             Authentically Brewed.
           </span>
-          <span className="block text-4xl text-[#CE9C3F] sm:text-5xl lg:text-[46px]">
+          <span className="block text-3xl text-[#CE9C3F] sm:text-4xl lg:text-[85px]">
             Naturally Distinct.
           </span>
         </h1>
 
         <div>
-          <p className="text-base font-bold uppercase tracking-wider text-white sm:text-lg">
+          <span className="mb-2 block h-px w-82 bg-[#CE9C3F]" />
+          <p
+            className={`${superGrotesk.className} text-sm font-normal uppercase tracking-wider text-white sm:text-[30px]`}
+          >
             Edinborough Soya Sauce
           </p>
-          <span className="mt-2 block h-[2px] w-16 bg-[#CE9C3F]" />
+          <span className="mt-2 block h-px w-82 bg-[#CE9C3F]" />
         </div>
 
-        <p className="max-w-md text-sm leading-relaxed text-neutral-300 sm:text-base">
+        <p
+          className={`${prompt.className} text-white max-w-4xl text-xs font-normal leading-relaxed text-neutral-300 sm:text-[15px]`}
+        >
           Traditionally brewed through natural fermentation for rich, authentic
           taste in every drop.
         </p>

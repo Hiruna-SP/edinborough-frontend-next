@@ -7,17 +7,16 @@ import SoyaSauceHero from "@/components/home/soyaSauseBanner";
 import StatsBar from "@/components/home/statsBar";
 import TonightRecipes from "@/components/home/tonightSection";
 
-
 export default function Home() {
   return (
     <main className="min-h-screen bg-white">
       <HomeHero />
       <ExploreProductSection />
-      <ProductDiscoverySection />
+      <SoyaSauceHero />
       <CraftGallery />
       <StatsBar />
+      <ProductDiscoverySection />
       <ProductsBanner />
-      <SoyaSauceHero />
       <TonightRecipes />
     </main>
   );

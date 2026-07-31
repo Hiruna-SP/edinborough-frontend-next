@@ -1,3 +1,4 @@
+import Navbar from "@/components/common/navbar";
 import CraftGallery from "@/components/home/craftGallery";
 import ExploreProductSection from "@/components/home/ExploreProductSection";
 import HomeHero from "@/components/home/homeHero";
@@ -10,6 +11,7 @@ import TonightRecipes from "@/components/home/tonightSection";
 export default function Home() {
   return (
     <main className="min-h-screen bg-white">
+      <Navbar />
       <HomeHero />
       <ExploreProductSection />
       <SoyaSauceHero />

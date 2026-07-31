@@ -7,17 +7,6 @@ import { ArrowLeft, ArrowRight, Search, Menu, X } from "lucide-react";
 import { superGrotesk, prompt } from "@/lib/fonts";
 import Button from "@/components/common/button";
 
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Our Story", href: "/our-story" },
-  { label: "Our Products", href: "/our-products" },
-  { label: "Network", href: "/network" },
-  { label: "Services", href: "/services" },
-  { label: "Recipes", href: "/recipes" },
-  { label: "Careers", href: "/careers" },
-  { label: "News", href: "/news" },
-  { label: "Contact", href: "/contact" },
-];
 
 // Developers: add hero slides here. Each slide can be an image OR a video —
 // just set `type` accordingly. Videos autoplay muted/looped like a GIF.
@@ -51,21 +40,6 @@ const slides: Slide[] = [{
 
 const AUTOPLAY_MS = 5000;
 
-function Logo() {
-  return (
-    <Link href="/" className="relative block h-14 w-36 -ml-7 -mt-2" aria-label="Edinborough home">
-      {/* Drop your real logo file in /public and point this at it. */}
-      <Image
-        src="/images/home/logo1.png"
-        alt="Edinborough"
-        fill
-        priority
-        sizes="144px"
-        className="object-contain object-left"
-      />
-    </Link>
-  );
-}
 
 export default function HomeHero() {
   const [current, setCurrent] = useState(0);
@@ -88,7 +62,7 @@ export default function HomeHero() {
   }, [current]);
 
   return (
-    <section className="relative h-[85vh] min-h-[480px] w-full overflow-hidden bg-black sm:min-h-[560px] lg:min-h-[600px]">
+    <section id="home-hero" className="relative h-[85vh] min-h-[480px] w-full overflow-hidden bg-black sm:min-h-[560px] lg:min-h-[600px]">
       {/* Slides */}
       {slides.map((slide, index) => (
         <div
@@ -124,68 +98,6 @@ export default function HomeHero() {
 
       {/* Dark scrim for legibility */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/60" />
-
-      {/* Nav bar */}
-      <header className="absolute inset-x-0 top-0 z-30">
-        <div className="flex items-center justify-between px-6 py-4 sm:px-10 lg:px-12">
-          <Logo />
-
-          <nav className={`${superGrotesk.className} hidden items-center gap-7 lg:flex`}>
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className={`text-[13px] uppercase tracking-wide transition-colors ${
-                  link.label === "Home"
-                    ? "text-[#E2201B]"
-                    : "text-white hover:text-white/70"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-
-          <div className="flex items-center gap-6 text-white">
-            <button type="button" aria-label="Search" className="hover:text-white/70">
-              <Search className="h-5 w-5" strokeWidth={2} />
-            </button>
-            <button
-              type="button"
-              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-              aria-expanded={mobileMenuOpen}
-              onClick={() => setMobileMenuOpen((open) => !open)}
-              className="hover:text-white/70"
-            >
-              {mobileMenuOpen ? (
-                <X className="h-5 w-5" strokeWidth={2} />
-              ) : (
-                <Menu className="h-5 w-5" strokeWidth={2} />
-              )}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile nav panel */}
-        {mobileMenuOpen && (
-          <nav
-            className={`${superGrotesk.className} flex flex-col gap-1 bg-black/90 px-6 py-4 lg:hidden`}
-          >
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className={`py-2 text-xs uppercase tracking-wide ${
-                  link.label === "Home" ? "text-[#E2201B]" : "text-white"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-        )}
-      </header>
 
       {/* Hero copy */}
       <div className="absolute inset-x-0 bottom-0 z-10 px-6 pb-14 sm:px-12 sm:pb-16 lg:px-24 lg:pb-20">

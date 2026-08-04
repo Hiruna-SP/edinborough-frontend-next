@@ -1,4 +1,5 @@
 import HeroBanner from "@/components/common/heroBanner";
+import MediaBanner from "@/components/common/mediaBanner";
 import StatsBar from "@/components/common/statsBar";
 
 export default function About() {
@@ -10,6 +11,14 @@ export default function About() {
         backgroundImage="/images/about/herobanner.png"
       />
       <StatsBar bgColor="#F3F3F3" textColor="#000000" dividerColor="#FF0000" />
+      <MediaBanner
+        title={"TRUSTED QUALITY.\nPROVEN EXCELLENCE."}
+        text="For over 50 years, Edinborough has been delivering quality products through innovation and a commitment to excellence. From everyday essentials to family favourites, our products are crafted to meet the highest standards and enjoyed across Sri Lanka."
+        buttonText="Explore Products"
+        buttonHref="/products"
+        imageSrc="/images/about/trustBanner.png"
+        imageAlt="Edinborough product range on a kitchen counter"
+      />
     </main>
   );
 }

@@ -124,7 +124,7 @@ export default function MediaBanner({
         )}
 
         {/* Text content, floating on top of the image */}
-        <div className="relative z-10 mx-auto flex h-full max-w-[1920px] items-center px-6 sm:px-10 lg:px-16 xl:px-20">
+        <div className="relative z-10 mx-auto flex h-full max-w-[1920px] items-center px-6 sm:px-10 lg:px-16 xl:px-10">
           <div className="max-w-xl">
             {subtitle && (
               <p

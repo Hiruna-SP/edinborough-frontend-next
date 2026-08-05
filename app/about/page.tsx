@@ -3,6 +3,7 @@ import HeroBanner from "@/components/common/heroBanner";
 import MediaBanner from "@/components/common/mediaBanner";
 import StatsBar from "@/components/common/statsBar";
 import TextBanner from "@/components/common/textBanner";
+import IconTextColumns from "@/components/about/iconTextColumns";
 
 export default function About() {
   return (
@@ -38,7 +39,8 @@ export default function About() {
           {
             year: "1973",
             heading: "Our Begining",
-            description:"Mr. C.M.R.R. Pasha began producing cordials from his own home with a vision to create quality products for local families.",
+            description:
+              "Mr. C.M.R.R. Pasha began producing cordials from his own home with a vision to create quality products for local families.",
             imageSrc: "/images/about/1.png",
             imageAlt: "Mr. C.M.R.R. Pasha bottling cordials by hand in 1973",
           },
@@ -46,7 +48,8 @@ export default function About() {
             year: "1980s",
             heading: "Growing Passion",
             description:
-              "With increasing demand, we expanded our production and introduced a range of delicious sauces and cordials.",  imageSrc: "/images/about/2.png",
+              "With increasing demand, we expanded our production and introduced a range of delicious sauces and cordials.",
+            imageSrc: "/images/about/2.png",
             imageAlt: "Edinborough production line in the 1980s",
           },
           {
@@ -76,15 +79,6 @@ export default function About() {
         ]}
       />
       <MediaBanner
-        title={"TRUSTED QUALITY.\nPROVEN EXCELLENCE."}
-        text="For over 50 years, Edinborough has been delivering quality products through innovation and a commitment to excellence. From everyday essentials to family favourites, our products are crafted to meet the highest standards and enjoyed across Sri Lanka."
-        buttonText="Explore Products"
-        buttonHref="/products"
-        imageSrc="/images/about/trustBanner.png"
-        imageAlt="Edinborough product range on a kitchen counter"
-        showGradient={true}
-      />
-      <MediaBanner
         title={"A PROUD SRI LANKAN\nBRAND, TRUSTED IN\n40+ COUNTRIES"}
         titleColor="#FFFFFF"
         highlightText="40+ COUNTRIES"
@@ -98,6 +92,40 @@ export default function About() {
         buttonTextColor="#000000"
         showGradient={false}
         layout="full"
+      />
+      <IconTextColumns
+        items={[
+          {
+            label: "Our Vision",
+            labelColor: "#E2201B",
+            title:
+              "To be the most\nversatile and leading\nfood company in Sri Lanka",
+            description:
+              "To delight our valued customers by consistently exceeding their expectations through trusted quality, innovation, and excellence in every product we create.",
+            imageSrc: "/images/about/vision.png",
+            imageAlt: "Target icon representing Edinborough's vision",
+          },
+          {
+            label: "Our Mission",
+            labelColor: "#0845BA",
+            title:
+              "Delivering safe,\nhigh-quality products\nat competitive prices",
+            description:
+              "We are committed to delivering safe, high-quality products on time while exceeding customer expectations through innovation, a skilled workforce, and adherence to local and international quality standards.",
+            imageSrc: "/images/about/mission.png",
+            imageAlt:
+              "Mountain with flag icon representing Edinborough's mission",
+          },
+        ]}
+      />
+      <MediaBanner
+        title={"TRUSTED QUALITY.\nPROVEN EXCELLENCE."}
+        text="For over 50 years, Edinborough has been delivering quality products through innovation and a commitment to excellence. From everyday essentials to family favourites, our products are crafted to meet the highest standards and enjoyed across Sri Lanka."
+        buttonText="Explore Products"
+        buttonHref="/products"
+        imageSrc="/images/about/trustBanner.png"
+        imageAlt="Edinborough product range on a kitchen counter"
+        showGradient={true}
       />
     </main>
   );

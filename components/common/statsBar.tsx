@@ -32,7 +32,7 @@ export default function StatsBar({
 }: StatsBarProps) {
   return (
     <section
-      className="px-6 py-10 sm:px-10 sm:py-12"
+      className="px-6 py-10 sm:px-10 sm:py-12 mb-14"
       style={{ backgroundColor: bgColor }}
     >
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-10 sm:flex-row sm:items-center sm:justify-between sm:gap-4">

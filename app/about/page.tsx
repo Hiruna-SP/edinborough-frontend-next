@@ -4,6 +4,7 @@ import MediaBanner from "@/components/common/mediaBanner";
 import StatsBar from "@/components/common/statsBar";
 import TextBanner from "@/components/common/textBanner";
 import IconTextColumns from "@/components/about/iconTextColumns";
+import ChecklistGrid from "@/components/about/checkListGrid";
 
 export default function About() {
   return (
@@ -126,6 +127,39 @@ export default function About() {
         imageSrc="/images/about/trustBanner.png"
         imageAlt="Edinborough product range on a kitchen counter"
         showGradient={true}
+      />
+      <ChecklistGrid
+        label="What Makes Us Different"
+        items={[
+          {
+            title: "50+ Years of Excellence",
+            description: "Five decades of trusted quality and authentic taste.",
+          },
+          {
+            title: "Trusted by Generations",
+            description: "A household name loved by Sri Lankan families.",
+          },
+          {
+            title: "World-Class Quality",
+            description:
+              "Manufactured under rigorous local and international standards.",
+          },
+          {
+            title: "Wide Range of Products",
+            description:
+              "Sauces, spreads, beverages, and more for every kitchen.",
+          },
+          {
+            title: "Island-Wide Distribution",
+            description:
+              "Bringing quality products to every corner of Sri Lanka.",
+          },
+          {
+            title: "Serving Global Markets",
+            description:
+              "Bringing authentic Sri Lankan taste to customers around the world.",
+          },
+        ]}
       />
     </main>
   );

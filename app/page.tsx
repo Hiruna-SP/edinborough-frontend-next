@@ -26,6 +26,8 @@ export default function Home() {
         buttonHref="/products"
         imageSrc="/images/home/mayonnaiseBanner.png"
         imageAlt="Edinborough Mayonnaise bottles and pouch with a burger and fresh eggs"
+        layout="split"
+        showGradient={true}
       />
       <TonightRecipes />
     </main>

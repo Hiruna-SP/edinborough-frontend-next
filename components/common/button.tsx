@@ -14,6 +14,8 @@ const colorStyles: Record<ButtonColor, string> = {
 type ButtonProps = {
   text: string;
   color?: ButtonColor;
+  bgColor?: string;
+  textColor?: string;
   href?: string;
   onClick?: () => void;
   type?: "button" | "submit";
@@ -26,10 +28,17 @@ type ButtonProps = {
  *
  * <Button text="Explore Products" color="blue" href="/our-products" />
  * <Button text="Subscribe" color="red" onClick={handleSubmit} type="submit" />
+ *
+ * For one-off colors that don't fit the `color` presets, pass `bgColor`/`textColor`
+ * (any CSS color value). These override the preset via inline style, so `color`
+ * can be left as-is or omitted:
+ * <Button text="Explore Our Products" bgColor="#FFFFFF" textColor="#0B0B0B" href="/products" />
  */
 export default function Button({
   text,
   color = "blue",
+  bgColor,
+  textColor,
   href,
   onClick,
   type = "button",
@@ -37,16 +46,24 @@ export default function Button({
 }: ButtonProps) {
   const classes = `${prompt.className} inline-flex items-center justify-center px-6 py-3 text-[10px] font-semibold uppercase tracking-widest transition-colors ${colorStyles[color]} ${className}`;
 
+  const style =
+    bgColor || textColor
+      ? {
+          backgroundColor: bgColor,
+          color: textColor,
+        }
+      : undefined;
+
   if (href) {
     return (
-      <Link href={href} className={classes}>
+      <Link href={href} className={classes} style={style}>
         {text}
       </Link>
     );
   }
 
   return (
-    <button type={type} onClick={onClick} className={classes}>
+    <button type={type} onClick={onClick} className={classes} style={style}>
       {text}
     </button>
   );

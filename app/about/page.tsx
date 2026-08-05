@@ -1,6 +1,7 @@
 import HeroBanner from "@/components/common/heroBanner";
 import MediaBanner from "@/components/common/mediaBanner";
 import StatsBar from "@/components/common/statsBar";
+import TextBanner from "@/components/common/textBanner";
 
 export default function About() {
   return (
@@ -9,6 +10,10 @@ export default function About() {
         title="About Edinborough"
         text="From a home kitchen in 1973 to one of Sri Lanka's leading food companies, our journey has always been driven by quality, innovation, and trust."
         backgroundImage="/images/about/herobanner.png"
+      />
+      <TextBanner
+        title="WHO WE ARE"
+        text="For over five decades, Edinborough has combined Sri Lankan heritage, exceptional quality, and modern innovation to create products trusted by families and chefs."
       />
       <StatsBar bgColor="#F3F3F3" textColor="#000000" dividerColor="#FF0000" />
       <MediaBanner

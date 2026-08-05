@@ -1,3 +1,4 @@
+import Timeline from "@/components/about/timeline";
 import HeroBanner from "@/components/common/heroBanner";
 import MediaBanner from "@/components/common/mediaBanner";
 import StatsBar from "@/components/common/statsBar";
@@ -27,6 +28,52 @@ export default function About() {
         imageSrc="/images/about/heritage.png"
         imageAlt="Founder C.M.R.R. Pasha bottling products in 1973, alongside modern Edinborough factory operations"
         showGradient={false}
+      />
+      <TextBanner
+        title="OUR JOURNEY"
+        text="From humble beginnings in 1973 to a trusted global brand, Edinborough continues to deliver quality products for every table."
+      />
+      <Timeline
+        items={[
+          {
+            year: "1973",
+            heading: "Our Begining",
+            description:"Mr. C.M.R.R. Pasha began producing cordials from his own home with a vision to create quality products for local families.",
+            imageSrc: "/images/about/1.png",
+            imageAlt: "Mr. C.M.R.R. Pasha bottling cordials by hand in 1973",
+          },
+          {
+            year: "1980s",
+            heading: "Growing Passion",
+            description:
+              "With increasing demand, we expanded our production and introduced a range of delicious sauces and cordials.",  imageSrc: "/images/about/2.png",
+            imageAlt: "Edinborough production line in the 1980s",
+          },
+          {
+            year: "1990s",
+            heading: "Expanding Horizons",
+            description:
+              "We moved to a larger facility and strengthened our distribution network across Sri Lanka.",
+            imageSrc: "/images/about/3.png",
+            imageAlt: "Edinborough factory building in the 1990s",
+          },
+          {
+            year: "2000s",
+            heading: "Reaching Beyond",
+            description:
+              "Our products reached international markets, sharing the taste of Sri Lanka with the world.",
+            imageSrc: "/images/about/4.png",
+            imageAlt: "Edinborough retail store in the 2000s",
+          },
+          {
+            year: "Today",
+            heading: "A Legacy Continues",
+            description:
+              "With over 50 years of trust, we continue to innovate while staying true to the quality you love.",
+            imageSrc: "/images/about/5.png",
+            imageAlt: "Shelves of Edinborough products today",
+          },
+        ]}
       />
       <MediaBanner
         title={"TRUSTED QUALITY.\nPROVEN EXCELLENCE."}

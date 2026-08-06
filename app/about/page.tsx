@@ -163,6 +163,46 @@ export default function About() {
           },
         ]}
       />
+      <MediaBanner
+        layout="full"
+        title={"INNOVATION\nNEVER STOPS."}
+        titleColor="#000000"
+        highlightText="NEVER STOPS."
+        highlightColor="#DA281C"
+        subtitle="INNOVATION AT EDINBOROUGH"
+        subtitleColor="#DA281C"
+        text="At Edinborough, innovation drives everything we do. We continuously develop new products that meet evolving consumer needs while upholding the quality and trust we've built since 1973."
+        textColor="#000"
+        buttonText="Explore Innovative News"
+        buttonBgColor="#FFFFFF"
+        buttonTextColor="#000000"
+        buttonHref="/news"
+        showGradient={false}
+        imageSrc="/images/about/innovation.png"
+        imageAlt="A red silk cloth draped over a podium, revealing the Edinborough logo"
+        sideItems={[
+          {
+            title: "New Ideas",
+            description: "Creating tomorrow's food solutions.",
+          },
+          {
+            title: "Research & Development",
+            description: "Innovating through continuous research.",
+          },
+          {
+            title: "Quality Testing",
+            description: "Ensuring quality in every product.",
+          },
+          {
+            title: "Consumer Insights",
+            description: "Inspired by changing consumer needs.",
+          },
+          {
+            title: "Ready for Tomorrow",
+            description: "Building the future of trusted food.",
+          },
+        ]}
+      />
       <TeamSection
         subtitle="Behind every trusted product is a passionate team dedicated to quality, innovation, and excellence."
         leadership={[

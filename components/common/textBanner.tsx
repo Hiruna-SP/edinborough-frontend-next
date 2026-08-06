@@ -5,6 +5,7 @@ interface SectionHeadingProps {
   titleColor?: string;
   text: string;
   textColor?: string;
+  action?: React.ReactNode;
 }
 
 /**
@@ -21,29 +22,37 @@ interface SectionHeadingProps {
  * @param {string} [titleColor] - Color for the title (default: "#111111").
  * @param {string} text         - Paragraph text below the title.
  * @param {string} [textColor]  - Color for the paragraph text (default: "#4B4B4B").
+ * @param {React.ReactNode} [action] - Optional content rendered to the right of the title/text (e.g. carousel controls).
  */
 export default function SectionHeading({
   title,
   titleColor = "#000000",
   text,
-  textColor = "#000000",
+  textColor = "#000",
+  action,
 }: SectionHeadingProps) {
   return (
     <section className="px-6 pt-10 sm:px-10 lg:px-16 lg:pt-14 pb-8 xl:px-10">
       <div className="mx-auto max-w-[1920px]">
-        <h2
-          className={`${superGrotesk.className} text-2xl font-normal uppercase leading-none sm:text-3xl lg:text-4xl`}
-          style={{ color: titleColor }}
-        >
-          {title}
-        </h2>
+        <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
+          <div>
+            <h2
+              className={`${superGrotesk.className} text-2xl font-normal uppercase leading-none sm:text-3xl lg:text-4xl`}
+              style={{ color: titleColor }}
+            >
+              {title}
+            </h2>
 
-        <p
-          className={`${prompt.className} mt-4 max-w-xl text-sm font-normal leading-relaxed sm:text-[14px]`}
-          style={{ color: textColor }}
-        >
-          {text}
-        </p>
+            <p
+              className={`${prompt.className} mt-4 max-w-xl text-sm font-normal leading-relaxed sm:text-[14px]`}
+              style={{ color: textColor }}
+            >
+              {text}
+            </p>
+          </div>
+
+          {action}
+        </div>
       </div>
     </section>
   );

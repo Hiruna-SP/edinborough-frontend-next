@@ -7,6 +7,7 @@ import IconTextColumns from "@/components/about/iconTextColumns";
 import ChecklistGrid from "@/components/about/checkListGrid";
 import FeatureRow from "@/components/about/featureRow";
 import TeamSection from "@/components/about/team";
+import BrandsShowcase from "@/components/about/brandsShowCase";
 
 export default function About() {
   return (
@@ -200,6 +201,49 @@ export default function About() {
           {
             title: "Ready for Tomorrow",
             description: "Building the future of trusted food.",
+          },
+        ]}
+      />
+      <BrandsShowcase
+        title="Our Brands"
+        text="We offer a diverse portfolio of trusted brands, each crafted to deliver exceptional taste, quality and reliable across every product category."
+        seeAllText="See All"
+        seeAllHref="/brands"
+        brands={[
+          {
+            name: "Happymaid",
+            logoSrc: "/images/about/31.png",
+            logoAlt: "Happymaid logo",
+          },
+          {
+            name: "Edinborough",
+            logoSrc: "/images/about/32.png",
+            logoAlt: "Edinborough logo",
+          },
+          {
+            name: "Pasha",
+            logoSrc: "/images/about/33.png",
+            logoAlt: "Pasha logo",
+          },
+          {
+            name: "ChefMate",
+            logoSrc: "/images/about/34.png",
+            logoAlt: "ChefMate logo",
+          },
+          {
+            name: "Pacific Choice",
+            logoSrc: "/images/about/35.png",
+            logoAlt: "Pacific Choice logo",
+          },
+          {
+            name: "Mity",
+            logoSrc: "/images/about/36.png",
+            logoAlt: "Mity logo",
+          },
+          {
+            name: "Happymaid",
+            logoSrc: "/images/about/31.png",
+            logoAlt: "Happymaid logo",
           },
         ]}
       />

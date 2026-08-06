@@ -6,6 +6,7 @@ import TextBanner from "@/components/common/textBanner";
 import IconTextColumns from "@/components/about/iconTextColumns";
 import ChecklistGrid from "@/components/about/checkListGrid";
 import FeatureRow from "@/components/about/featureRow";
+import TeamSection from "@/components/about/team";
 
 export default function About() {
   return (
@@ -159,6 +160,81 @@ export default function About() {
             title: "Serving Global Markets",
             description:
               "Bringing authentic Sri Lankan taste to customers around the world.",
+          },
+        ]}
+      />
+      <TeamSection
+        subtitle="Behind every trusted product is a passionate team dedicated to quality, innovation, and excellence."
+        leadership={[
+          {
+            name: "Mr. C.M.M.R. Pasha",
+            title: "Founder",
+            phone: "-",
+            imageSrc: "/images/about/sample.png",
+            imageAlt: "Mr. C.M.M.R. Pasha",
+          },
+          {
+            name: "R.P.M. Zalmy",
+            title: "Managing Director",
+            phone: "+9477 298 4984",
+            imageSrc: "/images/about/sample.png",
+            imageAlt: "R.P.M. Zalmy",
+          },
+          {
+            name: "Mr. Mushthak Ahmed",
+            title: "Director – Business Development",
+            phone: "+9477 298 4984",
+            imageSrc: "/images/about/sample.png",
+            imageAlt: "Mr. Mushthak Ahmed",
+          },
+          {
+            name: "Mr. Lahiru Thomas",
+            title: "Head of Sales",
+            phone: "+9477 298 4984",
+            imageSrc: "/images/about/sample.png",
+            imageAlt: "Mr. Lahiru Thomas",
+          },
+        ]}
+        management={[
+          {
+            name: "Thawsief Niyas",
+            title: "Head – Quality Assurance & R&D",
+            phone: "+9477 298 4984",
+          },
+          {
+            name: "Nalin Udugampola",
+            title: "Factory Manager",
+            phone: "+9477 298 4984",
+          },
+          {
+            name: "Kasun Millaniya",
+            title: "Engineering Manager",
+            phone: "+9477 298 4984",
+          },
+          {
+            name: "Lahiru Deminda",
+            title: "Human Resources Manager",
+            phone: "+9477 298 4984",
+          },
+          {
+            name: "Lahiru Thalagalage",
+            title: "Finance Manager",
+            phone: "+9477 298 4984",
+          },
+          {
+            name: "Dulith Kulatunge",
+            title: "Brand Manager",
+            phone: "+9477 298 4984",
+          },
+          {
+            name: "Supun Dhananjaya",
+            title: "IT Executive",
+            phone: "+9477 298 4984",
+          },
+          {
+            name: "Supun Dhananjaya",
+            title: "IT Executive",
+            phone: "+9477 298 4984",
           },
         ]}
       />

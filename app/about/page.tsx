@@ -8,6 +8,7 @@ import ChecklistGrid from "@/components/about/checkListGrid";
 import FeatureRow from "@/components/about/featureRow";
 import TeamSection from "@/components/about/team";
 import BrandsShowcase from "@/components/about/brandsShowCase";
+import AwardsShowcase from "@/components/about/awardsShowcase";
 
 export default function About() {
   return (
@@ -244,6 +245,38 @@ export default function About() {
             name: "Happymaid",
             logoSrc: "/images/about/31.png",
             logoAlt: "Happymaid logo",
+          },
+        ]}
+      />
+      <AwardsShowcase
+        title="Our Awards & Recognitions"
+        text="These accolades inspire us to continue raising the bar and creating products that bring pride to Sri Lanka."
+        seeAllText="View All"
+        seeAllHref="/awards"
+        awards={[
+          {
+            imageSrc: "/images/about/41.png",
+            imageAlt: "1973 - Edinborough Established in Sri Lanka - A Heritage of Flavour",
+          },
+          {
+            imageSrc: "/images/about/42.png",
+            imageAlt: "1975 - National Chamber Export Award - For Business Excellence",
+          },
+          {
+            imageSrc: "/images/about/43.png",
+            imageAlt: "1981 - NCE Gold Award - For Export Excellence in Asia",
+          },
+          {
+            imageSrc: "/images/about/44.png",
+            imageAlt: "2000 - Presidential Export Excellence Award - For Outstanding Performance",
+          },
+          {
+            imageSrc: "/images/about/44.png",
+            imageAlt: "2000 - Presidential Export Excellence Award - For Outstanding Performance",
+          },
+          {
+            imageSrc: "/images/about/42.png",
+            imageAlt: "1973 - Edinborough Established in Sri Lanka - A Heritage of Flavour",
           },
         ]}
       />

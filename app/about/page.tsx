@@ -9,10 +9,12 @@ import FeatureRow from "@/components/about/featureRow";
 import TeamSection from "@/components/about/team";
 import BrandsShowcase from "@/components/about/brandsShowCase";
 import AwardsShowcase from "@/components/about/awardsShowcase";
+import Navbar from "@/components/common/navbar";
 
 export default function About() {
   return (
     <main className="min-h-screen bg-white">
+      <Navbar />
       <HeroBanner
         title="About Edinborough"
         text="From a home kitchen in 1973 to one of Sri Lanka's leading food companies, our journey has always been driven by quality, innovation, and trust."
@@ -256,11 +258,13 @@ export default function About() {
         awards={[
           {
             imageSrc: "/images/about/41.png",
-            imageAlt: "1973 - Edinborough Established in Sri Lanka - A Heritage of Flavour",
+            imageAlt:
+              "1973 - Edinborough Established in Sri Lanka - A Heritage of Flavour",
           },
           {
             imageSrc: "/images/about/42.png",
-            imageAlt: "1975 - National Chamber Export Award - For Business Excellence",
+            imageAlt:
+              "1975 - National Chamber Export Award - For Business Excellence",
           },
           {
             imageSrc: "/images/about/43.png",
@@ -268,15 +272,18 @@ export default function About() {
           },
           {
             imageSrc: "/images/about/44.png",
-            imageAlt: "2000 - Presidential Export Excellence Award - For Outstanding Performance",
+            imageAlt:
+              "2000 - Presidential Export Excellence Award - For Outstanding Performance",
           },
           {
             imageSrc: "/images/about/44.png",
-            imageAlt: "2000 - Presidential Export Excellence Award - For Outstanding Performance",
+            imageAlt:
+              "2000 - Presidential Export Excellence Award - For Outstanding Performance",
           },
           {
             imageSrc: "/images/about/42.png",
-            imageAlt: "1973 - Edinborough Established in Sri Lanka - A Heritage of Flavour",
+            imageAlt:
+              "1973 - Edinborough Established in Sri Lanka - A Heritage of Flavour",
           },
         ]}
       />

@@ -5,7 +5,7 @@ import StatsBar from "@/components/common/statsBar";
 import TextBanner from "@/components/common/textBanner";
 import IconTextColumns from "@/components/about/iconTextColumns";
 import ChecklistGrid from "@/components/about/checkListGrid";
-import FeatureRow from "@/components/about/featureRow";
+import FeatureRow from "@/components/common/featureRow";
 import TeamSection from "@/components/about/team";
 import BrandsShowcase from "@/components/about/brandsShowCase";
 import AwardsShowcase from "@/components/about/awardsShowcase";

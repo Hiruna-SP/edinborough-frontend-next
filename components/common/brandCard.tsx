@@ -47,10 +47,10 @@ export default function BrandCard({
 }: BrandCardProps) {
   return (
     <div
-      className="flex flex-col items-center p-6 text-center"
+      className="flex flex-col items-center p-4 text-center"
       style={{ backgroundColor: bgColor }}
     >
-      <div className="relative aspect-square w-full">
+      <div className="relative aspect-4/3 w-full">
         <Image
           src={logoSrc}
           alt={logoAlt}
@@ -61,7 +61,7 @@ export default function BrandCard({
       </div>
 
       <h3
-        className={`${superGrotesk.className} mt-4 text-sm font-semibold uppercase text-[#111111] sm:text-base`}
+        className={`${superGrotesk.className} mt-2 text-sm font-semibold uppercase text-[#111111] sm:text-base`}
       >
         {name}
       </h3>
@@ -71,7 +71,7 @@ export default function BrandCard({
 
       <a
         href={productsHref}
-        className={`${prompt.className} mt-3 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide sm:text-sm`}
+        className={`${prompt.className} mt-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide sm:text-sm`}
         style={{ color: productsColor }}
       >
         {productsText}

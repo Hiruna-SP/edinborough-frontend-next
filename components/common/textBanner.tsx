@@ -6,6 +6,7 @@ interface SectionHeadingProps {
   text: string;
   textColor?: string;
   action?: React.ReactNode;
+  layout?: "stacked" | "inline";
 }
 
 /**
@@ -23,6 +24,7 @@ interface SectionHeadingProps {
  * @param {string} text         - Paragraph text below the title.
  * @param {string} [textColor]  - Color for the paragraph text (default: "#4B4B4B").
  * @param {React.ReactNode} [action] - Optional content rendered to the right of the title/text (e.g. carousel controls).
+ * @param {string} [layout] - "stacked" (default) places text below the title; "inline" places title and text side by side on the same row, vertically centered.
  */
 export default function SectionHeading({
   title,
@@ -30,7 +32,36 @@ export default function SectionHeading({
   text,
   textColor = "#000",
   action,
+  layout = "stacked",
 }: SectionHeadingProps) {
+  if (layout === "inline") {
+    return (
+      <section className="px-6 pt-10 sm:px-10 lg:px-16 lg:pt-14 pb-8 xl:px-10">
+        <div className="mx-auto max-w-[1920px]">
+          <div className="flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:gap-24">
+              <h2
+                className={`${superGrotesk.className} shrink-0 text-2xl font-normal uppercase leading-none sm:text-3xl lg:text-4xl`}
+                style={{ color: titleColor }}
+              >
+                {title}
+              </h2>
+
+              <p
+                className={`${prompt.className} max-w-lg text-sm font-normal leading-relaxed sm:text-[14px]`}
+                style={{ color: textColor }}
+              >
+                {text}
+              </p>
+            </div>
+
+            {action}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="px-6 pt-10 sm:px-10 lg:px-16 lg:pt-14 pb-8 xl:px-10">
       <div className="mx-auto max-w-[1920px]">

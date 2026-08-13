@@ -68,6 +68,7 @@ export default function OurProductsPage() {
       <SectionHeading
         title="Our Brands"
         text="We offer a diverse portfolio of trusted brands, each crafted to deliver exceptional taste, quality and reliable across every product category."
+        layout="inline"
         action={
           <div className="flex shrink-0 items-center gap-3">
             <Button

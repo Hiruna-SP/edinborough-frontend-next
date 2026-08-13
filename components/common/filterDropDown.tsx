@@ -1,5 +1,7 @@
 "use client";
 
+import { superGrotesk } from "@/lib/fonts";
+
 interface FilterOption {
   label: string;
   value: string;
@@ -36,7 +38,7 @@ interface FilterDropdownProps {
  * @param {FilterOption[]} options  - Options to list in the dropdown.
  * @param {string} [value]          - Currently selected value (controlled). Defaults to showing `label`.
  * @param {(value: string) => void} [onChange] - Called with the new value when the selection changes.
- * @param {string} [borderColor]    - Border color of the pill (default: "#D9D9D9").
+ * @param {string} [borderColor]    - Border color of the box (default: "#DBDBDB").
  * @param {string} [textColor]      - Text color (default: "#111111").
  */
 export default function FilterDropdown({
@@ -44,19 +46,19 @@ export default function FilterDropdown({
   options,
   value,
   onChange,
-  borderColor = "#D9D9D9",
+  borderColor = "#DBDBDB",
   textColor = "#111111",
 }: FilterDropdownProps) {
   return (
     <div
-      className="relative inline-flex items-center rounded-full border px-4 py-2"
+      className="relative inline-flex min-w-45 items-center justify-between border px-5 py-3"
       style={{ borderColor }}
     >
       <select
         aria-label={label}
         value={value ?? ""}
         onChange={(e) => onChange?.(e.target.value)}
-        className="appearance-none bg-transparent pr-6 text-xs font-semibold uppercase tracking-wide focus:outline-none sm:text-sm"
+        className={`${superGrotesk.className} w-full appearance-none bg-transparent pr-6 text-sm font-normal uppercase tracking-wide focus:outline-none`}
         style={{ color: textColor }}
       >
         {value === undefined && (
@@ -74,7 +76,7 @@ export default function FilterDropdown({
       <svg
         viewBox="0 0 24 24"
         fill="none"
-        className="pointer-events-none absolute right-3 h-3.5 w-3.5"
+        className="pointer-events-none absolute right-4 h-4 w-4"
         aria-hidden="true"
       >
         <path

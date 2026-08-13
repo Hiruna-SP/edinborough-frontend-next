@@ -74,7 +74,7 @@ export default function ProductListingHeader({
       </div>
 
       {filters && filters.length > 0 && (
-        <div className="flex shrink-0 flex-wrap items-center gap-3">
+        <div className="flex shrink-0 flex-wrap items-center gap-4">
           {filters.map((filter) => (
             <FilterDropdown
               key={filter.label}

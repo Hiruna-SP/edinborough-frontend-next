@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { prompt } from "@/lib/fonts";
 
@@ -20,6 +21,8 @@ type ButtonProps = {
   onClick?: () => void;
   type?: "button" | "submit";
   className?: string;
+  iconSrc?: string;
+  iconAlt?: string;
 };
 
 /**
@@ -43,8 +46,10 @@ export default function Button({
   onClick,
   type = "button",
   className = "",
+  iconSrc,
+  iconAlt = "",
 }: ButtonProps) {
-  const classes = `${prompt.className} inline-flex items-center justify-center px-6 py-3 text-[10px] font-semibold uppercase tracking-widest transition-colors ${colorStyles[color]} ${className}`;
+  const classes = `${prompt.className} inline-flex items-center justify-center gap-2.5 px-6 py-3 text-[10px] font-semibold uppercase tracking-widest transition-colors ${colorStyles[color]} ${className}`;
 
   const style =
     bgColor || textColor
@@ -54,17 +59,26 @@ export default function Button({
         }
       : undefined;
 
+  const content = (
+    <>
+      {iconSrc && (
+        <Image src={iconSrc} alt={iconAlt} width={20} height={20} className="shrink-0" />
+      )}
+      {text}
+    </>
+  );
+
   if (href) {
     return (
       <Link href={href} className={classes} style={style}>
-        {text}
+        {content}
       </Link>
     );
   }
 
   return (
     <button type={type} onClick={onClick} className={classes} style={style}>
-      {text}
+      {content}
     </button>
   );
 }

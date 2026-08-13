@@ -69,17 +69,21 @@ export default function OurProductsPage() {
           <div className="flex shrink-0 items-center gap-3">
             <Button
               text="All Brands"
+              iconSrc="/images/brands/1.png"
+              iconAlt="All brands icon"
               onClick={() => selectGroup("all")}
               bgColor={activeGroup === "all" ? "#E2201B" : "#FFFFFF"}
               textColor={activeGroup === "all" ? "#FFFFFF" : "#111111"}
-              className={activeGroup === "all" ? "" : "border border-[#DBDBDB]"}
+              className={`px-8 py-4 text-sm ${activeGroup === "all" ? "" : "border border-[#DBDBDB]"}`}
             />
             <Button
               text="Edinborough Brands"
+              iconSrc="/images/brands/2.png"
+              iconAlt="Edinborough brands icon"
               onClick={() => selectGroup("edinborough")}
               bgColor={activeGroup === "edinborough" ? "#E2201B" : "#FFFFFF"}
               textColor={activeGroup === "edinborough" ? "#FFFFFF" : "#111111"}
-              className={activeGroup === "edinborough" ? "" : "border border-[#DBDBDB]"}
+              className={`px-8 py-4 text-sm ${activeGroup === "edinborough" ? "" : "border border-[#DBDBDB]"}`}
             />
           </div>
         }

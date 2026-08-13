@@ -24,7 +24,7 @@ export default function HeroBanner({ title, text, backgroundImage, imageAlt }: H
       />
 
       {/* Dark gradient overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/10  to-black/0" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/90  to-black/0" />
 
       {/* Content */}
       <div className="absolute inset-0 z-10 flex items-center pt-20">

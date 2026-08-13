@@ -1,13 +1,12 @@
 "use client";
 
-import { prompt } from "@/lib/fonts";
+import { superGrotesk } from "@/lib/fonts";
 
 interface PaginationProps {
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
   activeColor?: string;
-  inactiveColor?: string;
 }
 
 /**
@@ -23,30 +22,41 @@ interface PaginationProps {
  * @param {number} totalPages                  - Total number of pages.
  * @param {(page: number) => void} onPageChange - Called with the new page number when the user navigates.
  * @param {string} [activeColor]               - Border/text color for the current page (default: "#E2201B").
- * @param {string} [inactiveColor]              - Text color for non-current pages and enabled Prev/Next (default: "#111111").
  */
 export default function Pagination({
   currentPage,
   totalPages,
   onPageChange,
   activeColor = "#E2201B",
-  inactiveColor = "#111111",
 }: PaginationProps) {
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
     <nav
-      className={`${prompt.className} flex items-center justify-end gap-2 text-xs font-semibold uppercase tracking-wide sm:text-sm`}
+      className={`${superGrotesk.className} flex items-center justify-end gap-2 text-xs font-normal uppercase tracking-wide sm:text-sm`}
       aria-label="Pagination"
     >
       <button
         type="button"
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="flex items-center gap-1 px-2 py-1 disabled:opacity-40"
-        style={{ color: inactiveColor }}
+        className="flex h-11 items-center uppercase gap-1 border px-3 disabled:cursor-not-allowed disabled:border-transparent disabled:bg-[#EDEDED] disabled:text-[#B3B3B3] enabled:border-[#DBDBDB] enabled:bg-white enabled:text-black"
       >
-        <span aria-hidden="true">&larr;</span>
+        <svg
+          aria-hidden="true"
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path
+            d="M15 6l-6 6 6 6"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
         Previous
       </button>
 
@@ -58,10 +68,10 @@ export default function Pagination({
             type="button"
             onClick={() => onPageChange(page)}
             aria-current={isActive ? "page" : undefined}
-            className="flex h-8 w-8 items-center justify-center border"
+            className="flex h-11 w-11 items-center justify-center border bg-white"
             style={{
-              borderColor: isActive ? activeColor : "transparent",
-              color: isActive ? activeColor : inactiveColor,
+              borderColor: isActive ? activeColor : "#DBDBDB",
+              color: isActive ? activeColor : "#000000",
             }}
           >
             {page}
@@ -73,10 +83,24 @@ export default function Pagination({
         type="button"
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="flex items-center gap-1 bg-[#111111] px-3 py-2 text-white disabled:opacity-40"
+        className="flex h-11 items-center gap-1 border uppercase px-3 disabled:cursor-not-allowed disabled:border-transparent disabled:bg-[#EDEDED] disabled:text-[#B3B3B3] enabled:border-[#DBDBDB] enabled:bg-white enabled:text-black"
       >
         Next
-        <span aria-hidden="true">&rarr;</span>
+        <svg
+          aria-hidden="true"
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path
+            d="M9 6l6 6-6 6"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
       </button>
     </nav>
   );

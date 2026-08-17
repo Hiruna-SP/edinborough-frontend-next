@@ -26,7 +26,6 @@ interface Story {
   title: string;
   description: string;
   date: string;
-  visitStoreHref?: string;
 }
 
 const categoryNames: Record<CategorySlug, string> = {
@@ -47,7 +46,6 @@ const stories: Story[] = [
     title: "Edinborough Opens New Gourmet Outlet in Colombo",
     description: "Fresh, imported and local favourites now under one roof.",
     date: "May 20, 2024",
-    visitStoreHref: "/our-products",
   },
   {
     slug: "expands-production-facility",
@@ -286,8 +284,6 @@ export default function NewsPage() {
                 description={story.description}
                 date={story.date}
                 detailsHref={`/news/${story.category}/${story.slug}`}
-                visitStoreText={story.visitStoreHref ? "Visit Store" : undefined}
-                visitStoreHref={story.visitStoreHref}
               />
             ))}
           </div>

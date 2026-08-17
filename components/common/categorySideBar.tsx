@@ -6,8 +6,8 @@ import { superGrotesk, prompt } from "@/lib/fonts";
 export interface CategoryItem {
   name: string;
   count: number;
-  iconSrc: string;
-  iconAlt: string;
+  iconSrc?: string;
+  iconAlt?: string;
   href: string;
   active?: boolean;
 }
@@ -57,8 +57,8 @@ interface CategorySidebarProps {
  * CategoryItem:
  * @param {string} name      - Category name.
  * @param {number} count     - Product count shown on the right.
- * @param {string} iconSrc   - Path/URL to the category icon.
- * @param {string} iconAlt   - Alt text for the icon.
+ * @param {string} [iconSrc] - Path/URL to the category icon. Omit (along with `iconAlt`) to render no icon.
+ * @param {string} [iconAlt] - Alt text for the icon.
  * @param {string} href      - Link for this category.
  * @param {boolean} [active] - Whether this category is the currently selected one.
  */
@@ -99,15 +99,17 @@ export default function CategorySidebar({
               }
             >
               <span className="flex items-center gap-3">
-                <span className="relative h-5 w-5 shrink-0">
-                  <Image
-                    src={category.iconSrc}
-                    alt={category.iconAlt}
-                    fill
-                    className="object-contain"
-                    sizes="20px"
-                  />
-                </span>
+                {category.iconSrc && (
+                  <span className="relative h-5 w-5 shrink-0">
+                    <Image
+                      src={category.iconSrc}
+                      alt={category.iconAlt ?? ""}
+                      fill
+                      className="object-contain"
+                      sizes="20px"
+                    />
+                  </span>
+                )}
                 {category.name}
               </span>
               <span>{category.count}</span>

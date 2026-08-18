@@ -3,7 +3,7 @@ import { superGrotesk, prompt } from "@/lib/fonts";
 interface SectionHeadingProps {
   title: string;
   titleColor?: string;
-  text: string;
+  text?: string;
   textColor?: string;
   action?: React.ReactNode;
   layout?: "stacked" | "inline";
@@ -21,7 +21,7 @@ interface SectionHeadingProps {
  * Props:
  * @param {string} title        - Heading text.
  * @param {string} [titleColor] - Color for the title (default: "#111111").
- * @param {string} text         - Paragraph text below the title.
+ * @param {string} [text]       - Paragraph text below the title. Omit to render no text.
  * @param {string} [textColor]  - Color for the paragraph text (default: "#4B4B4B").
  * @param {React.ReactNode} [action] - Optional content rendered to the right of the title/text (e.g. carousel controls).
  * @param {string} [layout] - "stacked" (default) places text below the title; "inline" places title and text side by side on the same row, vertically centered.
@@ -47,12 +47,14 @@ export default function SectionHeading({
                 {title}
               </h2>
 
-              <p
-                className={`${prompt.className} max-w-lg text-sm font-normal leading-relaxed sm:text-[14px]`}
-                style={{ color: textColor }}
-              >
-                {text}
-              </p>
+              {text && (
+                <p
+                  className={`${prompt.className} max-w-lg text-sm font-normal leading-relaxed sm:text-[14px]`}
+                  style={{ color: textColor }}
+                >
+                  {text}
+                </p>
+              )}
             </div>
 
             {action}
@@ -74,12 +76,14 @@ export default function SectionHeading({
               {title}
             </h2>
 
-            <p
-              className={`${prompt.className} mt-4 max-w-xl text-sm font-normal leading-relaxed sm:text-[14px]`}
-              style={{ color: textColor }}
-            >
-              {text}
-            </p>
+            {text && (
+              <p
+                className={`${prompt.className} mt-4 max-w-xl text-sm font-normal leading-relaxed sm:text-[14px]`}
+                style={{ color: textColor }}
+              >
+                {text}
+              </p>
+            )}
           </div>
 
           {action}

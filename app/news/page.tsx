@@ -53,7 +53,8 @@ const stories: Story[] = [
     imageSrc: "/images/about/heroBanner.png",
     imageAlt: "Edinborough production facility with staff on the bottling line",
     title: "Edinborough Expands Production Facility",
-    description: "A new milestone in our journey to deliver quality to more homes.",
+    description:
+      "A new milestone in our journey to deliver quality to more homes.",
     date: "May 12, 2024",
   },
   {
@@ -62,14 +63,16 @@ const stories: Story[] = [
     imageSrc: "/images/service/beemas.png",
     imageAlt: "BEEMAS store interior stocked with Edinborough products",
     title: "BEEMAS Joins the Edinborough Retail Family",
-    description: "Expanding our retail footprint with a trusted community store.",
+    description:
+      "Expanding our retail footprint with a trusted community store.",
     date: "April 28, 2024",
   },
   {
     slug: "look-inside-head-office",
     category: "company-news",
     imageSrc: "/images/about/heritage.png",
-    imageAlt: "Edinborough's heritage, from its founding to its modern facility",
+    imageAlt:
+      "Edinborough's heritage, from its founding to its modern facility",
     title: "A Look Inside Our Head Office",
     description: "Where five decades of heritage meet modern operations.",
     date: "April 10, 2024",
@@ -89,14 +92,16 @@ const stories: Story[] = [
     imageSrc: "/images/home/shawarma.png",
     imageAlt: "Shawarma wraps made with Edinborough Tomato Sauce",
     title: "Five Ways to Elevate Weeknight Dinners",
-    description: "Simple swaps that turn everyday meals into something special.",
+    description:
+      "Simple swaps that turn everyday meals into something special.",
     date: "May 2, 2024",
   },
   {
     slug: "whats-trending-tables",
     category: "food-trends",
     imageSrc: "/images/home/mayonnaiseBanner.png",
-    imageAlt: "Edinborough mayonnaise range in bottle, pouch and squeeze formats",
+    imageAlt:
+      "Edinborough mayonnaise range in bottle, pouch and squeeze formats",
     title: "What's Trending on Sri Lankan Tables This Season",
     description: "A look at the flavours shaping menus across the island.",
     date: "April 20, 2024",
@@ -105,7 +110,8 @@ const stories: Story[] = [
     slug: "reading-nutrition-labels",
     category: "tips-knowledge",
     imageSrc: "/images/home/jam.png",
-    imageAlt: "Jar of Edinborough Mixed Fruit Jam with its nutrition label visible",
+    imageAlt:
+      "Jar of Edinborough Mixed Fruit Jam with its nutrition label visible",
     title: "Reading Nutrition Labels the Right Way",
     description: "A quick guide to making sense of what's on the pack.",
     date: "May 8, 2024",
@@ -143,16 +149,19 @@ const stories: Story[] = [
     imageSrc: "/images/service/agri.png",
     imageAlt: "Edinborough team at an outdoor community event",
     title: "Edinborough at the Colombo Food Fair",
-    description: "Meeting the families and chefs who trust our products every day.",
+    description:
+      "Meeting the families and chefs who trust our products every day.",
     date: "March 30, 2024",
   },
   {
     slug: "supporting-local-farming",
     category: "csr-projects",
     imageSrc: "/images/service/agri.png",
-    imageAlt: "Workers tending to agricultural tanks at an Edinborough facility",
+    imageAlt:
+      "Workers tending to agricultural tanks at an Edinborough facility",
     title: "Supporting Local Farming Communities",
-    description: "Partnering with growers to build a more resilient supply chain.",
+    description:
+      "Partnering with growers to build a more resilient supply chain.",
     date: "May 5, 2024",
   },
   {
@@ -176,7 +185,9 @@ const stories: Story[] = [
 ];
 
 export default function NewsPage() {
-  const [selectedCategory, setSelectedCategory] = useState<CategorySlug | "all">("all");
+  const [selectedCategory, setSelectedCategory] = useState<
+    CategorySlug | "all"
+  >("all");
   const [page, setPage] = useState(1);
 
   const filteredStories =
@@ -184,17 +195,22 @@ export default function NewsPage() {
       ? stories
       : stories.filter((story) => story.category === selectedCategory);
 
-  const totalPages = Math.max(1, Math.ceil(filteredStories.length / STORIES_PER_PAGE));
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredStories.length / STORIES_PER_PAGE),
+  );
   const pageStories = filteredStories.slice(
     (page - 1) * STORIES_PER_PAGE,
     page * STORIES_PER_PAGE,
   );
 
-  const categories = (Object.keys(categoryNames) as CategorySlug[]).map((slug) => ({
-    slug,
-    name: categoryNames[slug],
-    count: stories.filter((story) => story.category === slug).length,
-  }));
+  const categories = (Object.keys(categoryNames) as CategorySlug[]).map(
+    (slug) => ({
+      slug,
+      name: categoryNames[slug],
+      count: stories.filter((story) => story.category === slug).length,
+    }),
+  );
 
   const selectCategory = (slug: CategorySlug | "all") => {
     setSelectedCategory(slug);
@@ -207,34 +223,6 @@ export default function NewsPage() {
         title="NEWS & STORIES"
         text="Discover the latest from Edinborough, from exciting product innovations and delicious recipes to company milestones, events and stories from our journey."
         backgroundImage="/images/news/hero.png"
-      />
-      <FeatureRow
-        items={[
-          {
-            imageSrc: "/images/about/premium.png",
-            imageAlt: "Ribbon badge icon representing premium quality",
-            title: "Premium Quality",
-            description: "Finest ingredients for the best taste",
-          },
-          {
-            imageSrc: "/images/about/trust.png",
-            imageAlt: "Handshake icon representing trust since 1973",
-            title: "Trusted Since 1973",
-            description: "Over 50 years of culinary excellence",
-          },
-          {
-            imageSrc: "/images/about/range.png",
-            imageAlt: "Bottles icon representing a wide product range",
-            title: "Wide Range",
-            description: "Thousands of products for every need",
-          },
-          {
-            imageSrc: "/images/about/delivery.png",
-            imageAlt: "Delivery truck icon representing island-wide delivery",
-            title: "Island Wide Delivery",
-            description: "Delivering goodness across Sri Lanka",
-          },
-        ]}
       />
 
       {/* Story listing: category sidebar + filterable, paginated grid */}
@@ -289,10 +277,42 @@ export default function NewsPage() {
           </div>
 
           <div className="mt-10">
-            <Pagination currentPage={page} totalPages={totalPages} onPageChange={setPage} />
+            <Pagination
+              currentPage={page}
+              totalPages={totalPages}
+              onPageChange={setPage}
+            />
           </div>
         </div>
       </section>
+      <FeatureRow
+        items={[
+          {
+            imageSrc: "/images/about/premium.png",
+            imageAlt: "Ribbon badge icon representing premium quality",
+            title: "Premium Quality",
+            description: "Finest ingredients for the best taste",
+          },
+          {
+            imageSrc: "/images/about/trust.png",
+            imageAlt: "Handshake icon representing trust since 1973",
+            title: "Trusted Since 1973",
+            description: "Over 50 years of culinary excellence",
+          },
+          {
+            imageSrc: "/images/about/range.png",
+            imageAlt: "Bottles icon representing a wide product range",
+            title: "Wide Range",
+            description: "Thousands of products for every need",
+          },
+          {
+            imageSrc: "/images/about/delivery.png",
+            imageAlt: "Delivery truck icon representing island-wide delivery",
+            title: "Island Wide Delivery",
+            description: "Delivering goodness across Sri Lanka",
+          },
+        ]}
+      />
     </main>
   );
 }

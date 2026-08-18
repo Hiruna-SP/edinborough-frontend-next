@@ -59,7 +59,32 @@ function StarIcon({ color }: { color: string }) {
   );
 }
 
+function CheckIcon({ color }: { color: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      className="h-5 w-5 shrink-0"
+      aria-hidden="true"
+    >
+      <rect x="2" y="2" width="20" height="20" rx="4" stroke={color} strokeWidth="2" />
+      <path
+        d="M7 12.5l3 3 7-7"
+        stroke={color}
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export interface MediaBannerSideItem {
+  title: string;
+  description: string;
+}
+
+export interface MediaBannerChecklistItem {
   title: string;
   description: string;
 }
@@ -85,6 +110,10 @@ interface MediaBannerProps {
   sideItemIconColor?: string;
   sideItemTitleColor?: string;
   sideItemDescriptionColor?: string;
+  checklistItems?: MediaBannerChecklistItem[];
+  checklistIconColor?: string;
+  checklistTitleColor?: string;
+  checklistDescriptionColor?: string;
 }
 
 /**
@@ -117,6 +146,13 @@ interface MediaBannerProps {
  * @param {string} [sideItemIconColor]        - Color of the star bullet next to each side item (default: "#F04E23").
  * @param {string} [sideItemTitleColor]       - Color of each side item's title (default: "#111111").
  * @param {string} [sideItemDescriptionColor] - Color of each side item's description (default: "#4B4B4B").
+ * @param {MediaBannerChecklistItem[]} [checklistItems] - Optional grid of checkbox-bulleted items shown below the
+ *                                       text/button (e.g. "Health & Wellness", "Learning & Development"...). Only
+ *                                       rendered when `layout="full"`. Renders as a 3-column grid on desktop,
+ *                                       stacking to 1 column on mobile. Omit entirely for banners that don't need it.
+ * @param {string} [checklistIconColor]        - Color of the checkbox icon next to each item (default: "#E2201B").
+ * @param {string} [checklistTitleColor]       - Color of each item's title (default: "#FFFFFF").
+ * @param {string} [checklistDescriptionColor] - Color of each item's description (default: "#FFFFFF").
  */
 export default function MediaBanner({
   layout = "split",
@@ -139,12 +175,143 @@ export default function MediaBanner({
   sideItemIconColor = "#FF4E00",
   sideItemTitleColor = "#000",
   sideItemDescriptionColor = "#000",
+  checklistItems,
+  checklistIconColor = "#E2201B",
+  checklistTitleColor = "#FFFFFF",
+  checklistDescriptionColor = "#FFFFFF",
 }: MediaBannerProps) {
   if (layout === "full") {
     const overlay = showGradient ?? true;
+    const hasChecklist = !!checklistItems && checklistItems.length > 0;
+
+    const heroContent = (
+      <div className="flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-6">
+        <div className="max-w-xl">
+          {subtitle && (
+            <p
+              className={`${superGrotesk.className} text-base font-normal tracking-wide sm:text-lg lg:text-xl xl:text-[30px]`}
+              style={{ color: subtitleColor }}
+            >
+              {subtitle}
+            </p>
+          )}
+
+          <h1
+            className={`${superGrotesk.className} ${subtitle ? "mt-3" : ""} text-[34px] font-normal leading-[0.95] sm:text-[44px] md:text-[52px] xl:text-[64px]`}
+          >
+            {renderTitleLines(title, titleColor, highlightText, highlightColor)}
+          </h1>
+
+          <p
+            className={`${prompt.className} mt-5 max-w-4xl text-sm font-normal leading-relaxed text-neutral-200 lg:text-sm`}
+            style={textColor ? { color: textColor } : undefined}
+          >
+            {text}
+          </p>
+
+          {buttonText && (
+            <div className="mt-7">
+              <Button
+                text={buttonText}
+                color="blue"
+                href={buttonHref}
+                bgColor={buttonBgColor}
+                textColor={buttonTextColor}
+              />
+            </div>
+          )}
+        </div>
+
+        {sideItems && sideItems.length > 0 && (
+          <div className="flex w-full max-w-xs shrink-0 flex-col gap-5 lg:w-auto">
+            {sideItems.map((item, i) => (
+              <div key={`${item.title}-${i}`} className="flex items-start gap-2">
+                <span className="mt-1">
+                  <StarIcon color={sideItemIconColor} />
+                </span>
+                <div>
+                  <h3
+                    className={`${prompt.className} text-sm font-semibold sm:text-base`}
+                    style={{ color: sideItemTitleColor }}
+                  >
+                    {item.title}
+                  </h3>
+                  <p
+                    className={`${prompt.className} text-xs sm:text-sm`}
+                    style={{ color: sideItemDescriptionColor }}
+                  >
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+
+    const checklistContent = hasChecklist && (
+      <div className="grid grid-cols-1 gap-x-10 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+        {checklistItems!.map((item, i) => (
+          <div key={`${item.title}-${i}`} className="flex items-start gap-3">
+            <span className="mt-0.5">
+              <CheckIcon color={checklistIconColor} />
+            </span>
+            <div>
+              <h3
+                className={`${superGrotesk.className} text-base font-normal uppercase leading-snug sm:text-xl`}
+                style={{ color: checklistTitleColor }}
+              >
+                {item.title}
+              </h3>
+              <p
+                className={`${prompt.className} mt-1 text-[11px] leading-relaxed sm:text-xs`}
+                style={{ color: checklistDescriptionColor }}
+              >
+                {item.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+
+    if (hasChecklist) {
+      // The image only covers the hero-height top region; the checklist
+      // sits below it on a solid black area rather than stretching the
+      // image to fill the whole (now taller) section.
+      return (
+        <section className="relative overflow-hidden bg-black">
+          {/* Image height is driven by the text content's own padding below,
+              instead of a fixed box, so it hugs the text with no leftover gap. */}
+          <div className="relative">
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              fill
+              priority
+              className="object-cover object-center"
+              sizes="100vw"
+            />
+
+            {overlay && (
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/85 via-black/40 to-transparent" />
+            )}
+
+            <div className="relative z-10 mx-auto max-w-[1920px] px-6 pt-14 pb-6 sm:px-10 sm:pt-16 lg:px-16 lg:pt-20 lg:pb-8 xl:px-10">
+              {heroContent}
+            </div>
+          </div>
+
+          <div className="relative mx-auto max-w-[1920px] px-6 pt-2 pb-10 sm:px-10 lg:px-16 lg:pt-3 lg:pb-14 xl:px-10">
+            {checklistContent}
+          </div>
+        </section>
+      );
+    }
 
     return (
-      <section className="relative h-auto min-h-[420px] overflow-hidden sm:min-h-[480px] lg:h-[500px]">
+      <section className="relative h-auto min-h-105 overflow-hidden sm:min-h-120 lg:h-125">
         {/* Background image fills the whole section */}
         <Image
           src={imageSrc}
@@ -160,76 +327,8 @@ export default function MediaBanner({
         )}
 
         {/* Text content, floating on top of the image */}
-        <div className="relative z-10 mx-auto flex h-full max-w-[1920px] flex-col items-center gap-10 px-6 py-10 sm:px-10 lg:flex-row lg:items-center lg:justify-between lg:gap-6 lg:px-16 lg:py-0 xl:px-10">
-          <div className="max-w-xl">
-            {subtitle && (
-              <p
-                className={`${superGrotesk.className} text-base font-normal tracking-wide sm:text-lg lg:text-xl xl:text-[30px]`}
-                style={{ color: subtitleColor }}
-              >
-                {subtitle}
-              </p>
-            )}
-
-            <h1
-              className={`${superGrotesk.className} ${subtitle ? "mt-3" : ""} text-[34px] font-normal leading-[0.95] sm:text-[44px] md:text-[52px] xl:text-[64px]`}
-            >
-              {renderTitleLines(
-                title,
-                titleColor,
-                highlightText,
-                highlightColor,
-              )}
-            </h1>
-
-            <p
-              className={`${prompt.className} mt-5 max-w-4xl text-sm font-normal leading-relaxed text-neutral-200 lg:text-sm`}
-              style={textColor ? { color: textColor } : undefined}
-            >
-              {text}
-            </p>
-
-            {buttonText && (
-              <div className="mt-7">
-                <Button
-                  text={buttonText}
-                  color="blue"
-                  href={buttonHref}
-                  bgColor={buttonBgColor}
-                  textColor={buttonTextColor}
-                />
-              </div>
-            )}
-          </div>
-
-          {sideItems && sideItems.length > 0 && (
-            <div className="flex w-full max-w-xs shrink-0 flex-col gap-5 lg:w-auto">
-              {sideItems.map((item, i) => (
-                <div
-                  key={`${item.title}-${i}`}
-                  className="flex items-start gap-2"
-                >
-                  <span className="mt-1">
-                    <StarIcon color={sideItemIconColor} />
-                  </span>
-                  <div>
-                    <h3
-                      className={`${prompt.className} text-sm font-semibold sm:text-base`}
-                      style={{ color: sideItemTitleColor }}
-                    >
-                      {item.title}
-                    </h3>
-                    <p
-                      className={`${prompt.className} text-xs sm:text-sm`}
-                      style={{ color: sideItemDescriptionColor }}
-                    >
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
+        <div className="relative z-10 mx-auto flex h-full max-w-[1920px] flex-col gap-10 px-6 py-10 sm:px-10 lg:px-16 lg:py-0 xl:px-10">
+          {heroContent}
         </div>
       </section>
     );

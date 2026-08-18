@@ -3,6 +3,7 @@ import TextBanner from "@/components/common/textBanner";
 import OpenPositionsGrid from "@/components/careers/openPositionsGrid";
 import MediaBanner from "@/components/common/mediaBanner";
 import FeatureRow from "@/components/common/featureRow";
+import WhyBuildCareer from "@/components/careers/whyBuildCareer";
 
 export default function CareersPage() {
   return (
@@ -11,6 +12,46 @@ export default function CareersPage() {
         title="EDINBOROUGH CAREERS"
         text="At Edinborough, we don't just create great products, we create opportunities, build careers, and grow together."
         backgroundImage="/images/careers/hero.png"
+      />
+
+      <WhyBuildCareer
+        title="WHY BUILD YOUR CAREER WITH US?"
+        text="We believe our people are the secret behind our success. Here, your ideas matter, your growth is supported, and your work makes a real impact."
+        linkText="DISCOVER OUR CULTURE"
+        linkHref="/about"
+        items={[
+          {
+            imageSrc: "/images/careers/growth.svg",
+            imageAlt: "Person with an upward arrow icon representing growth",
+            title: "Growth",
+            description: "Continuous learning and career advancement opportunities.",
+          },
+          {
+            imageSrc: "/images/careers/purpose.svg",
+            imageAlt: "Heart icon representing purpose",
+            title: "Purpose",
+            description: "Be part of a brand that brings joy to millions every day.",
+          },
+          {
+            imageSrc: "/images/careers/people.svg",
+            imageAlt: "People icon representing colleagues",
+            title: "People",
+            description: "Work with talented, passionate and supportive teams.",
+          },
+          {
+            imageSrc: "/images/careers/intergrity.svg",
+            imageAlt: "Shield icon representing integrity",
+            title: "Integrity",
+            description: "A culture built on trust, respect and accountability.",
+          },
+          {
+            imageSrc: "/images/careers/sustainability.svg",
+            imageAlt: "Leaf icon representing sustainability",
+            title: "Sustainability",
+            description:
+              "Contributing to a better future for our planet and communities.",
+          },
+        ]}
       />
 
       <TextBanner title="OPEN POSITIONS" />

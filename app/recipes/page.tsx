@@ -1,6 +1,7 @@
 import HeroBanner from "@/components/common/heroBanner";
 import RecipeCategories from "@/components/recipes/recipeCategories";
 import FeaturedRecipes from "@/components/recipes/featuredRecipes";
+import MediaBanner from "@/components/common/mediaBanner";
 
 export default function RecipesPage() {
   return (
@@ -96,6 +97,21 @@ export default function RecipesPage() {
             detailsHref: "/recipes/chocolate-cake",
           },
         ]}
+      />
+      <MediaBanner
+        title={"MADE FOR \n EVERY MEAL."}
+        subtitle="CRAFTED WITH CARE."
+        subtitleColor="#D19E40"
+        text="Every recipe is brought to life with trusted ingredients, exceptional quality, and the care that families have valued for generations."
+        titleColor="#FFFFFF"
+        buttonText="EXPLORE RECIPES"
+        buttonHref="/products"
+        buttonBgColor="#FFFFFF"
+        buttonTextColor="#000000"
+        imageSrc="/images/recipes/11.png"
+        imageAlt="Edinborough product range on a kitchen counter"
+        showGradient={false}
+        layout="full"
       />
     </main>
   );

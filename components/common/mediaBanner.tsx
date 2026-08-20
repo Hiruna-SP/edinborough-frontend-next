@@ -186,7 +186,7 @@ export default function MediaBanner({
 
     const heroContent = (
       <div className="flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-6">
-        <div className="max-w-xl">
+        <div className="max-w-sm">
           {subtitle && (
             <p
               className={`${superGrotesk.className} text-base font-normal tracking-wide sm:text-lg lg:text-xl xl:text-[30px]`}
@@ -327,7 +327,7 @@ export default function MediaBanner({
         )}
 
         {/* Text content, floating on top of the image */}
-        <div className="relative z-10 mx-auto flex h-full max-w-[1920px] flex-col gap-10 px-6 py-10 sm:px-10 lg:px-16 lg:py-0 xl:px-10">
+        <div className="relative z-10 mx-auto flex h-full max-w-[1920px] flex-col justify-center gap-10 px-6 py-10 sm:px-10 lg:px-16 lg:py-0 xl:px-10">
           {heroContent}
         </div>
       </section>
@@ -340,7 +340,7 @@ export default function MediaBanner({
     <section className="relative overflow-hidden bg-[#F7F2ED]">
       <div className="relative mx-auto flex max-w-[1920px] flex-col lg:h-[500px] lg:flex-row">
         {/* Text content */}
-        <div className="relative z-10 flex flex-col justify-center px-6 py-10 sm:px-10 lg:w-[43%] lg:px-16 lg:py-0 xl:px-10">
+        <div className="relative z-10 flex flex-col justify-center px-6 py-10 sm:px-10 lg:w-[38%] lg:px-16 lg:py-0 xl:px-10">
           {subtitle && (
             <p
               className={`${superGrotesk.className} text-base font-normal tracking-wide text-[#0B47BD] sm:text-lg lg:text-xl xl:text-[30px]`}
@@ -376,14 +376,14 @@ export default function MediaBanner({
         </div>
 
         {/* Product photography */}
-        <div className="relative h-[280px] sm:h-[360px] lg:h-full lg:w-[58%]">
+        <div className="relative h-[280px] sm:h-[360px] lg:h-full lg:w-[62%]">
           <Image
             src={imageSrc}
             alt={imageAlt}
             fill
             priority
             className="object-cover object-center"
-            sizes="(min-width: 1024px) 58vw, 100vw"
+            sizes="(min-width: 1024px) 62vw, 100vw"
           />
           {edgeFade && (
             /* Fades the left edge of the photo into the section background

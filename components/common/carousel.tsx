@@ -1,6 +1,6 @@
 "use client";
 
-import { prompt } from "@/lib/fonts";
+import { superGrotesk } from "@/lib/fonts";
 
 interface CarouselControlsProps {
   label?: string;
@@ -70,14 +70,14 @@ export default function CarouselControls({
         (href ? (
           <a
             href={href}
-            className={`${prompt.className} text-xs font-semibold uppercase tracking-wide sm:text-sm`}
+            className={`${superGrotesk.className} text-xs uppercase tracking-wide sm:text-sm`}
             style={{ color: labelColor }}
           >
             {label}
           </a>
         ) : (
           <span
-            className={`${prompt.className} text-xs font-semibold uppercase tracking-wide sm:text-sm`}
+            className={`${superGrotesk.className} text-xs uppercase tracking-wide sm:text-sm`}
             style={{ color: labelColor }}
           >
             {label}

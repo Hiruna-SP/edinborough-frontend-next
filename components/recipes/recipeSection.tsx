@@ -11,12 +11,20 @@ export interface RecipeSectionItem {
   time: string;
   title: string;
   description?: string;
+  authorName?: string;
+  authorLocation?: string;
+  viewCount?: string;
   detailsHref: string;
+  badgeText?: string;
+  badgeBgColor?: string;
+  badgeTextColor?: string;
 }
 
 interface RecipeSectionProps {
   title: string;
   titleColor?: string;
+  subtitle?: string;
+  subtitleColor?: string;
   recipes: RecipeSectionItem[];
   viewAllText?: string;
   viewAllHref?: string;
@@ -30,8 +38,10 @@ interface RecipeSectionProps {
  * (default 4) are visible at once; if more are passed, the row becomes a
  * scrollable carousel driven by the header arrows.
  *
- * Reused for both "Featured Recipes" (with descriptions, 4 per page) and
- * "Quick & Easy Recipes" (no descriptions, more cards per page).
+ * Reused across "Featured Recipes" (with descriptions, 4 per page),
+ * "Quick & Easy Recipes" (no descriptions, more cards per page), and
+ * "Featured Recipes From Our Community" (per-item author + view count +
+ * category badge instead of description, plus a `subtitle` under the title).
  *
  * Usage:
  * <RecipeSection
@@ -53,7 +63,9 @@ interface RecipeSectionProps {
  */
 export default function RecipeSection({
   title,
-  titleColor = "#111111",
+  titleColor = "#000000",
+  subtitle,
+  subtitleColor = "#000000",
   recipes,
   viewAllText = "View All",
   viewAllHref,
@@ -101,6 +113,8 @@ export default function RecipeSection({
       <TextBanner
         title={title}
         titleColor={titleColor}
+        text={subtitle}
+        textColor={subtitleColor}
         action={
           <CarouselControls
             label={viewAllText}
@@ -137,8 +151,13 @@ export default function RecipeSection({
                   time={recipe.time}
                   title={recipe.title}
                   description={recipe.description}
+                  authorName={recipe.authorName}
+                  authorLocation={recipe.authorLocation}
+                  viewCount={recipe.viewCount}
                   detailsHref={recipe.detailsHref}
-                  featuredText={featuredText}
+                  featuredText={recipe.badgeText ?? featuredText}
+                  featuredBgColor={recipe.badgeBgColor}
+                  featuredTextColor={recipe.badgeTextColor}
                 />
               </div>
             ))}

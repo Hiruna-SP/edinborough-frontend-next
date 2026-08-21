@@ -143,6 +143,58 @@ export default function RecipesPage() {
           },
         ]}
       />
+      <RecipeSection
+        title="FEATURED RECIPES FROM OUR COMMUNITY"
+        subtitle="Explore authentic recipes submitted by passionate home cooks and food enthusiasts using Edinborough's trusted range of products."
+        viewAllText="VIEW ALL"
+        viewAllHref="/recipes/all"
+        recipes={[
+          {
+            imageSrc: "/images/recipes/7.png",
+            imageAlt: "Kottu with Edinborough soya sauce",
+            time: "30 Min",
+            title: "Kottu With Edinborough Soya Sauce",
+            authorName: "Nadeesha Perera",
+            authorLocation: "Colombo, Sri Lanka",
+            viewCount: "3.2K Views",
+            detailsHref: "/recipes/kottu",
+            badgeText: "Dinner",
+          },
+          {
+            imageSrc: "/images/recipes/8.png",
+            imageAlt: "Creamy pasta with chilli and garlic sauce",
+            time: "25 Min",
+            title: "Creamy Pasta With Chilli And Garlic Sauce",
+            authorName: "Nadeesha Perera",
+            authorLocation: "Colombo, Sri Lanka",
+            viewCount: "3.2K Views",
+            detailsHref: "/recipes/creamy-pasta",
+            badgeText: "Lunch",
+          },
+          {
+            imageSrc: "/images/recipes/9.png",
+            imageAlt: "Prawn curry with Edinborough chili paste",
+            time: "40 Min",
+            title: "Prawn Curry With Edinborough Chili Paste",
+            authorName: "Nadeesha Perera",
+            authorLocation: "Colombo, Sri Lanka",
+            viewCount: "3.2K Views",
+            detailsHref: "/recipes/prawn-curry",
+            badgeText: "Dinner",
+          },
+          {
+            imageSrc: "/images/recipes/10.png",
+            imageAlt: "Chocolate cake with chocolate syrup",
+            time: "50 Min",
+            title: "Chocolate Cake With Chocolate Syrup",
+            authorName: "Nadeesha Perera",
+            authorLocation: "Colombo, Sri Lanka",
+            viewCount: "3.2K Views",
+            detailsHref: "/recipes/chocolate-cake",
+            badgeText: "Dessert",
+          },
+        ]}
+      />
       <MediaBanner
         title={"MADE FOR \n EVERY MEAL."}
         subtitle="CRAFTED WITH CARE."

@@ -186,7 +186,7 @@ export default function MediaBanner({
 
     const heroContent = (
       <div className="flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-6">
-        <div className="max-w-sm">
+        <div className="max-w-xl">
           {subtitle && (
             <p
               className={`${superGrotesk.className} text-base font-normal tracking-wide sm:text-lg lg:text-xl xl:text-[30px]`}

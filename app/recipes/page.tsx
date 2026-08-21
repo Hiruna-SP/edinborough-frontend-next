@@ -2,6 +2,7 @@ import HeroBanner from "@/components/common/heroBanner";
 import RecipeCategories from "@/components/recipes/recipeCategories";
 import RecipeSection from "@/components/recipes/recipeSection";
 import MediaBanner from "@/components/common/mediaBanner";
+import FeatureRow from "@/components/common/featureRow";
 
 export default function RecipesPage() {
   return (
@@ -99,6 +100,21 @@ export default function RecipesPage() {
           },
         ]}
       />
+      <MediaBanner
+        title={"MADE FOR \n EVERY MEAL."}
+        subtitle="CRAFTED WITH CARE."
+        subtitleColor="#D19E40"
+        text="Every recipe is brought to life with trusted ingredients, exceptional quality, and the care that families have valued for generations."
+        titleColor="#FFFFFF"
+        buttonText="EXPLORE RECIPES"
+        buttonHref="/products"
+        buttonBgColor="#FFFFFF"
+        buttonTextColor="#000000"
+        imageSrc="/images/recipes/11.png"
+        imageAlt="Edinborough product range on a kitchen counter"
+        showGradient={false}
+        layout="full"
+      />
 
       <RecipeSection
         title="QUICK & EASY RECIPES"
@@ -142,6 +158,24 @@ export default function RecipesPage() {
             detailsHref: "/recipes/mango-lassi",
           },
         ]}
+      />
+      <MediaBanner
+        layout="full"
+        subtitle="INSPIRE EVERY KITCHEN"
+        subtitleColor="#DA281C"
+        title={"SHARE YOUR RECIPE\nWITH EDINBOROUGH"}
+        titleColor="#1A1A1A"
+        highlightText="EDINBOROUGH"
+        highlightColor="#E31E24"
+        text="Have a favourite recipe made with Edinborough products? Share your culinary creations with our community and inspire home cooks across Sri Lanka."
+        textColor="#5C5C5C"
+        buttonText="SUBMIT YOUR RECIPE"
+        buttonHref="/recipes/submit"
+        buttonBgColor="#E31E24"
+        buttonTextColor="#FFFFFF"
+        imageSrc="/images/recipes/12.png"
+        imageAlt="Share your recipe with Edinborough"
+        showGradient={false}
       />
       <RecipeSection
         title="FEATURED RECIPES FROM OUR COMMUNITY"
@@ -195,20 +229,34 @@ export default function RecipesPage() {
           },
         ]}
       />
-      <MediaBanner
-        title={"MADE FOR \n EVERY MEAL."}
-        subtitle="CRAFTED WITH CARE."
-        subtitleColor="#D19E40"
-        text="Every recipe is brought to life with trusted ingredients, exceptional quality, and the care that families have valued for generations."
-        titleColor="#FFFFFF"
-        buttonText="EXPLORE RECIPES"
-        buttonHref="/products"
-        buttonBgColor="#FFFFFF"
-        buttonTextColor="#000000"
-        imageSrc="/images/recipes/11.png"
-        imageAlt="Edinborough product range on a kitchen counter"
-        showGradient={false}
-        layout="full"
+
+      <FeatureRow
+        items={[
+          {
+            imageSrc: "/images/about/premium.png",
+            imageAlt: "Ribbon badge icon representing premium quality",
+            title: "Premium Quality",
+            description: "Finest ingredients for the best taste",
+          },
+          {
+            imageSrc: "/images/about/trust.png",
+            imageAlt: "Handshake icon representing trust since 1973",
+            title: "Trusted Since 1973",
+            description: "Over 50 years of culinary excellence",
+          },
+          {
+            imageSrc: "/images/about/range.png",
+            imageAlt: "Bottles icon representing a wide product range",
+            title: "Wide Range",
+            description: "Thousands of products for every need",
+          },
+          {
+            imageSrc: "/images/about/delivery.png",
+            imageAlt: "Delivery truck icon representing island-wide delivery",
+            title: "Island Wide Delivery",
+            description: "Delivering goodness across Sri Lanka",
+          },
+        ]}
       />
     </main>
   );

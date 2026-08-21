@@ -7,7 +7,7 @@ interface RecipeCardProps {
   imageAlt: string;
   time: string;
   title: string;
-  description: string;
+  description?: string;
   detailsHref: string;
   detailsText?: string;
   featuredText?: string;
@@ -81,7 +81,9 @@ export default function RecipeCard({
         />
       </div>
 
-      <div className="flex flex-1 flex-col gap-3 bg-[#F5F5F5] p-5">
+      <div
+        className={`flex flex-1 flex-col ${description ? "gap-3" : "gap-1"} bg-[#F5F5F5] p-5`}
+      >
         <span
           className={`${prompt.className} flex items-center gap-2 text-xs text-[#4B4B4B]`}
         >
@@ -94,16 +96,18 @@ export default function RecipeCard({
         </span>
 
         <h3
-          className={`${superGrotesk.className} text-lg font-normal uppercase leading-snug text-[#111111] sm:text-2xl`}
+          className={`${superGrotesk.className} ${description ? "text-lg sm:text-2xl" : "text-base sm:text-xl"} font-normal uppercase leading-snug text-[#111111]`}
         >
           {title}
         </h3>
 
-        <p
-          className={`${prompt.className} text-sm leading-relaxed text-[#000000] sm:text-base`}
-        >
-          {description}
-        </p>
+        {description && (
+          <p
+            className={`${prompt.className} text-sm leading-relaxed text-[#000000] sm:text-base`}
+          >
+            {description}
+          </p>
+        )}
 
         <a
           href={detailsHref}

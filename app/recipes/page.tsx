@@ -1,6 +1,6 @@
 import HeroBanner from "@/components/common/heroBanner";
 import RecipeCategories from "@/components/recipes/recipeCategories";
-import FeaturedRecipes from "@/components/recipes/featuredRecipes";
+import RecipeSection from "@/components/recipes/recipeSection";
 import MediaBanner from "@/components/common/mediaBanner";
 
 export default function RecipesPage() {
@@ -55,10 +55,11 @@ export default function RecipesPage() {
         ]}
       />
 
-      <FeaturedRecipes
+      <RecipeSection
         title="FEATURED RECIPES"
         viewAllText="VIEW ALL"
         viewAllHref="/recipes/all"
+        featuredText="Featured"
         recipes={[
           {
             imageSrc: "/images/recipes/7.png",
@@ -95,6 +96,50 @@ export default function RecipesPage() {
             description:
               "Rich, moist and indulgent chocolate cake topped with our delicious chocolate syrup.",
             detailsHref: "/recipes/chocolate-cake",
+          },
+        ]}
+      />
+
+      <RecipeSection
+        title="QUICK & EASY RECIPES"
+        viewAllText="VIEW ALL"
+        viewAllHref="/recipes/all"
+        perPage={5}
+        recipes={[
+          {
+            imageSrc: "/images/recipes/7.png",
+            imageAlt: "Simple fried rice",
+            time: "20 Min",
+            title: "Simple Fried Rice",
+            detailsHref: "/recipes/simple-fried-rice",
+          },
+          {
+            imageSrc: "/images/recipes/8.png",
+            imageAlt: "Spicy chicken sandwich",
+            time: "15 Min",
+            title: "Spicy Chicken Sandwich",
+            detailsHref: "/recipes/spicy-chicken-sandwich",
+          },
+          {
+            imageSrc: "/images/recipes/9.png",
+            imageAlt: "Vegetable noodles",
+            time: "20 Min",
+            title: "Vegetable Noodles",
+            detailsHref: "/recipes/vegetable-noodles",
+          },
+          {
+            imageSrc: "/images/recipes/10.png",
+            imageAlt: "Chicken shawarma wraps",
+            time: "10 Min",
+            title: "Chicken Shawarma Wraps",
+            detailsHref: "/recipes/chicken-shawarma-wraps",
+          },
+          {
+            imageSrc: "/images/recipes/11.png",
+            imageAlt: "Mango lassi",
+            time: "05 Min",
+            title: "Mango Lassi",
+            detailsHref: "/recipes/mango-lassi",
           },
         ]}
       />

@@ -5,35 +5,40 @@ import TextBanner from "@/components/common/textBanner";
 import CarouselControls from "@/components/common/carousel";
 import RecipeCard from "@/components/recipes/recipeCard";
 
-export interface FeaturedRecipe {
+export interface RecipeSectionItem {
   imageSrc: string;
   imageAlt: string;
   time: string;
   title: string;
-  description: string;
+  description?: string;
   detailsHref: string;
 }
 
-interface FeaturedRecipesProps {
+interface RecipeSectionProps {
   title: string;
   titleColor?: string;
-  recipes: FeaturedRecipe[];
+  recipes: RecipeSectionItem[];
   viewAllText?: string;
   viewAllHref?: string;
   perPage?: number;
+  featuredText?: string;
 }
 
 /**
- * FeaturedRecipes - "Featured Recipes" section: title + "View All" link with
- * prev/next arrows in the header, followed by a row of RecipeCard tiles. At
- * most `perPage` recipes (default 4) are visible at once; if more are
- * passed, the row becomes a scrollable carousel driven by the header arrows.
+ * RecipeSection - Title + "View All" link with prev/next arrows in the
+ * header, followed by a row of RecipeCard tiles. At most `perPage` recipes
+ * (default 4) are visible at once; if more are passed, the row becomes a
+ * scrollable carousel driven by the header arrows.
+ *
+ * Reused for both "Featured Recipes" (with descriptions, 4 per page) and
+ * "Quick & Easy Recipes" (no descriptions, more cards per page).
  *
  * Usage:
- * <FeaturedRecipes
+ * <RecipeSection
  *   title="FEATURED RECIPES"
  *   viewAllText="VIEW ALL"
  *   viewAllHref="/recipes"
+ *   featuredText="Featured"
  *   recipes={[
  *     {
  *       imageSrc: "/images/recipes/kottu.png",
@@ -46,14 +51,15 @@ interface FeaturedRecipesProps {
  *   ]}
  * />
  */
-export default function FeaturedRecipes({
+export default function RecipeSection({
   title,
   titleColor = "#111111",
   recipes,
   viewAllText = "View All",
   viewAllHref,
   perPage = 4,
-}: FeaturedRecipesProps) {
+  featuredText,
+}: RecipeSectionProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const firstItemRef = useRef<HTMLDivElement | null>(null);
   const showCarousel = recipes.length > perPage;
@@ -132,7 +138,7 @@ export default function FeaturedRecipes({
                   title={recipe.title}
                   description={recipe.description}
                   detailsHref={recipe.detailsHref}
-                  featuredText="Featured"
+                  featuredText={featuredText}
                 />
               </div>
             ))}

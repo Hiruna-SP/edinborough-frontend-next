@@ -13,6 +13,7 @@ interface FeatureRowProps {
   titleColor?: string;
   descriptionColor?: string;
   dividerColor?: string;
+  bgColor?: string;
 }
 
 /**
@@ -54,6 +55,7 @@ interface FeatureRowProps {
  * @param {string} [titleColor]         - Color for each item's title (default: "#111111").
  * @param {string} [descriptionColor]   - Color for each item's description (default: "#4B4B4B").
  * @param {string} [dividerColor]       - Color of the vertical divider between items (default: "#E2201B").
+ * @param {string} [bgColor]            - Section background color (default: "transparent").
  *
  * FeatureRowItem:
  * @param {string} imageSrc  - Path or URL to the icon image.
@@ -66,15 +68,19 @@ export default function FeatureRow({
   titleColor = "#000",
   descriptionColor = "#000",
   dividerColor = "#FF0000",
+  bgColor,
 }: FeatureRowProps) {
   return (
-    <section className="px-6 py-10 sm:px-10 lg:px-16 lg:py-14 xl:px-10">
+    <section
+      className="px-6 py-10 sm:px-10 lg:px-16 lg:py-14 xl:px-10"
+      style={bgColor ? { backgroundColor: bgColor } : undefined}
+    >
       <div className="mx-auto max-w-[1920px]">
         <div className="grid grid-cols-1 gap-y-8 sm:grid-cols-2 sm:gap-x-12 lg:flex lg:items-stretch lg:gap-0">
           {items.map((item, i) => (
             <div
               key={`${item.title}-${i}`}
-              className={`flex flex-1 items-center gap-6 lg:px-6 xl:px-8 ${
+              className={`flex flex-1 items-center justify-center gap-6 lg:px-6 xl:px-8 ${
                 i < items.length - 1 ? "lg:border-r-2" : ""
               }`}
               style={
@@ -101,10 +107,14 @@ export default function FeatureRow({
                   {item.title}
                 </h3>
                 <p
-                  className={`${prompt.className} max-w-[180px] mt-1 text-sm font-normal leading-relaxed`}
+                  className={`${prompt.className} max-w-55 mt-1 text-sm font-normal leading-relaxed`}
                   style={{ color: descriptionColor }}
                 >
-                  {item.description}
+                  {item.description.split("\n").map((line, j) => (
+                    <span key={j} className="block">
+                      {line}
+                    </span>
+                  ))}
                 </p>
               </div>
             </div>

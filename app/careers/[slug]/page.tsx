@@ -1,72 +1,66 @@
-import HeroBanner from "@/components/common/heroBanner";
-import TextBanner from "@/components/common/textBanner";
-import OpenPositionsGrid from "@/components/careers/openPositionsGrid";
+import { notFound } from "next/navigation";
+import CareerDetail from "@/components/careers/careerDetail";
+import RelatedPositions from "@/components/careers/relatedPositions";
 import MediaBanner from "@/components/common/mediaBanner";
 import FeatureRow from "@/components/common/featureRow";
-import WhyBuildCareer from "@/components/careers/whyBuildCareer";
-import { careerPositions } from "@/components/careers/careerData";
+import {
+  careerPositions,
+  getCareerPositionBySlug,
+} from "@/components/careers/careerData";
 
-export default function CareersPage() {
+export async function generateStaticParams() {
+  return careerPositions.map((position) => ({ slug: position.slug }));
+}
+
+export default async function CareerDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const position = getCareerPositionBySlug(slug);
+
+  if (!position) {
+    notFound();
+  }
+
+  const relatedPositions = careerPositions
+    .filter((item) => item.slug !== slug)
+    .slice(0, 3)
+    .map((item) => ({
+      title: item.title,
+      department: item.department,
+      employmentType: item.employmentType,
+      location: item.location,
+      href: `/careers/${item.slug}`,
+    }));
+
   return (
     <main className="min-h-screen bg-white">
-      <HeroBanner
-        title="EDINBOROUGH CAREERS"
-        text="At Edinborough, we don't just create great products, we create opportunities, build careers, and grow together."
-        backgroundImage="/images/careers/hero.png"
-      />
-
-      <WhyBuildCareer
-        title="WHY BUILD YOUR CAREER WITH US?"
-        text="We believe our people are the secret behind our success. Here, your ideas matter, your growth is supported, and your work makes a real impact."
-        linkText="DISCOVER OUR CULTURE"
-        linkHref="/about"
-        items={[
-          {
-            imageSrc: "/images/careers/growth.svg",
-            imageAlt: "Person with an upward arrow icon representing growth",
-            title: "Growth",
-            description: "Continuous learning and career advancement opportunities.",
-          },
-          {
-            imageSrc: "/images/careers/purpose.svg",
-            imageAlt: "Heart icon representing purpose",
-            title: "Purpose",
-            description: "Be part of a brand that brings joy to millions every day.",
-          },
-          {
-            imageSrc: "/images/careers/people.svg",
-            imageAlt: "People icon representing colleagues",
-            title: "People",
-            description: "Work with talented, passionate and supportive teams.",
-          },
-          {
-            imageSrc: "/images/careers/intergrity.svg",
-            imageAlt: "Shield icon representing integrity",
-            title: "Integrity",
-            description: "A culture built on trust, respect and accountability.",
-          },
-          {
-            imageSrc: "/images/careers/sustainability.svg",
-            imageAlt: "Leaf icon representing sustainability",
-            title: "Sustainability",
-            description:
-              "Contributing to a better future for our planet and communities.",
-          },
+      <CareerDetail
+        title={position.title}
+        department={position.department}
+        employmentType={position.employmentType}
+        location={position.location}
+        datePosted={position.datePosted}
+        experience={position.experience}
+        aboutRole={position.aboutRole}
+        responsibilities={position.responsibilities}
+        requirements={position.requirements}
+        applyHref={position.applyHref}
+        breadcrumbItems={[
+          { label: "Home", href: "/" },
+          { label: "Edinborough Careers", href: "/careers" },
+          { label: position.title },
         ]}
       />
 
-      <TextBanner title="OPEN POSITIONS" />
-
-      <OpenPositionsGrid
-        positions={careerPositions.map((position) => ({
-          title: position.title,
-          department: position.department,
-          employmentType: position.employmentType,
-          location: position.location,
-          href: `/careers/${position.slug}`,
-        }))}
-      />
-
+      {relatedPositions.length > 0 && (
+        <RelatedPositions
+          title="Related Positions"
+          positions={relatedPositions}
+        />
+      )}
       <MediaBanner
         layout="full"
         subtitle="CAREER"

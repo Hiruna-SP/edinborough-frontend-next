@@ -144,7 +144,7 @@ export default function OpenPositionsGrid({
           ))}
         </div>
 
-        {!showAll && (
+        {!showAll && positions.length > initialCount && (
           <div className="mt-10 flex justify-center">
             <button
               type="button"

@@ -30,6 +30,10 @@ interface RecipeSectionProps {
   viewAllHref?: string;
   perPage?: number;
   featuredText?: string;
+  /** Show the header "View All" link + prev/next arrows (default: true). */
+  showControls?: boolean;
+  /** Tailwind aspect-ratio class for each card's image (default: "aspect-square"). */
+  imageAspectClassName?: string;
 }
 
 /**
@@ -71,6 +75,8 @@ export default function RecipeSection({
   viewAllHref,
   perPage = 4,
   featuredText,
+  showControls = true,
+  imageAspectClassName,
 }: RecipeSectionProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const firstItemRef = useRef<HTMLDivElement | null>(null);
@@ -116,14 +122,16 @@ export default function RecipeSection({
         text={subtitle}
         textColor={subtitleColor}
         action={
-          <CarouselControls
-            label={viewAllText}
-            href={viewAllHref}
-            onPrev={() => scroll("left")}
-            onNext={() => scroll("right")}
-            prevDisabled={showCarousel ? prevDisabled : true}
-            nextDisabled={showCarousel ? nextDisabled : true}
-          />
+          showControls ? (
+            <CarouselControls
+              label={viewAllText}
+              href={viewAllHref}
+              onPrev={() => scroll("left")}
+              onNext={() => scroll("right")}
+              prevDisabled={showCarousel ? prevDisabled : true}
+              nextDisabled={showCarousel ? nextDisabled : true}
+            />
+          ) : undefined
         }
       />
 
@@ -155,6 +163,7 @@ export default function RecipeSection({
                   authorLocation={recipe.authorLocation}
                   viewCount={recipe.viewCount}
                   detailsHref={recipe.detailsHref}
+                  imageAspectClassName={imageAspectClassName}
                   featuredText={recipe.badgeText ?? featuredText}
                   featuredBgColor={recipe.badgeBgColor}
                   featuredTextColor={recipe.badgeTextColor}

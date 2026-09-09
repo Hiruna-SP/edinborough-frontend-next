@@ -17,6 +17,8 @@ interface RecipeCardProps {
   featuredBgColor?: string;
   featuredTextColor?: string;
   detailsColor?: string;
+  /** Tailwind aspect-ratio class for the image box (default: "aspect-square"). */
+  imageAspectClassName?: string;
 }
 
 /**
@@ -49,6 +51,7 @@ interface RecipeCardProps {
  * @param {string} [featuredBgColor] - Background color for the featured tag (default: "#E2201B").
  * @param {string} [featuredTextColor] - Text color for the featured tag (default: "#FFFFFF").
  * @param {string} [detailsColor]    - Color for the details link and its arrow (default: "#DA281C").
+ * @param {string} [imageAspectClassName] - Tailwind aspect-ratio class for the image box (default: "aspect-square").
  */
 export default function RecipeCard({
   imageSrc,
@@ -65,11 +68,14 @@ export default function RecipeCard({
   featuredBgColor = "#E2201B",
   featuredTextColor = "#FFFFFF",
   detailsColor = "#DA281C",
+  imageAspectClassName = "aspect-square",
 }: RecipeCardProps) {
   const hasSecondaryText = !!description || !!authorName;
   return (
     <div className="flex h-full flex-col">
-      <div className="relative aspect-square w-full overflow-hidden bg-[#F0F0F0]">
+      <div
+        className={`relative ${imageAspectClassName} w-full overflow-hidden bg-[#F0F0F0]`}
+      >
         {featuredText && (
           <span
             className={`${prompt.className} absolute left-0 top-3 z-10 px-3 py-1 text-[10px] font-semibold uppercase tracking-wide`}

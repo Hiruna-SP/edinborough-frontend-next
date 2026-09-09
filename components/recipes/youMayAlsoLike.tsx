@@ -21,6 +21,12 @@ interface YouMayAlsoLikeProps {
   viewAllText?: string;
   viewAllHref?: string;
   perPage?: number;
+  /** Tailwind aspect-ratio class for each tile's image (default: "aspect-4/3"). */
+  imageAspectClassName?: string;
+  /** Wrap each image in the grey padded frame (default: true). */
+  showImageFrame?: boolean;
+  /** Horizontal gap between tiles, in rem (default: 1.5). */
+  gapRem?: number;
 }
 
 /**
@@ -58,6 +64,9 @@ export default function YouMayAlsoLike({
   viewAllText = "View All",
   viewAllHref,
   perPage = 4,
+  imageAspectClassName = "aspect-4/3",
+  showImageFrame = true,
+  gapRem = 1.5,
 }: YouMayAlsoLikeProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const firstItemRef = useRef<HTMLDivElement | null>(null);
@@ -116,10 +125,11 @@ export default function YouMayAlsoLike({
         <div className="mx-auto max-w-[1920px]">
           <div
             ref={scrollRef}
+            style={{ columnGap: `${gapRem}rem` }}
             className={
               showCarousel
-                ? "flex gap-6 overflow-x-auto scroll-smooth scrollbar-none [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-                : "flex gap-6"
+                ? "flex overflow-x-auto scroll-smooth scrollbar-none [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                : "flex"
             }
           >
             {items.map((item, i) => (
@@ -127,12 +137,14 @@ export default function YouMayAlsoLike({
                 key={`${item.title}-${i}`}
                 ref={i === 0 ? (el) => { firstItemRef.current = el; } : undefined}
                 style={{
-                  flex: `0 0 calc((100% - ${(visibleCount - 1) * 1.5}rem) / ${visibleCount})`,
+                  flex: `0 0 calc((100% - ${(visibleCount - 1) * gapRem}rem) / ${visibleCount})`,
                 }}
               >
                 <Link href={item.detailsHref} className="group flex flex-col">
-                  <div className="bg-[#F5F5F5] p-4">
-                    <div className="relative aspect-4/3 w-full overflow-hidden bg-[#F0F0F0]">
+                  <div className={showImageFrame ? "bg-[#F5F5F5] p-4" : undefined}>
+                    <div
+                      className={`relative ${imageAspectClassName} w-full overflow-hidden bg-[#F0F0F0]`}
+                    >
                       <Image
                         src={item.imageSrc}
                         alt={item.imageAlt}

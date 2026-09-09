@@ -1,12 +1,43 @@
 import { notFound } from "next/navigation";
 import RecipeDetail from "@/components/recipes/recipeDetail";
-import RecipeSection from "@/components/recipes/recipeSection";
+import YouMayAlsoLike from "@/components/recipes/youMayAlsoLike";
 import FeatureRow from "@/components/common/featureRow";
-import { recipeDetails, getRecipeBySlug } from "@/components/recipes/recipeData";
+import {
+  recipeDetails,
+  getRecipeBySlug,
+} from "@/components/recipes/recipeData";
+import MediaBanner from "@/components/common/mediaBanner";
 
 export function generateStaticParams() {
   return recipeDetails.map((recipe) => ({ slug: recipe.slug }));
 }
+
+const YOU_MAY_ALSO_LIKE_FALLBACK = [
+  {
+    imageSrc: "/images/recipes/7.png",
+    imageAlt: "Simple fried rice",
+    title: "Simple Fried Rice",
+    detailsHref: "/recipes/simple-fried-rice",
+  },
+  {
+    imageSrc: "/images/recipes/8.png",
+    imageAlt: "Spicy chicken sandwich",
+    title: "Spicy Chicken Sandwich",
+    detailsHref: "/recipes/spicy-chicken-sandwich",
+  },
+  {
+    imageSrc: "/images/recipes/9.png",
+    imageAlt: "Vegetable noodles",
+    title: "Vegetable Noodles",
+    detailsHref: "/recipes/vegetable-noodles",
+  },
+  {
+    imageSrc: "/images/recipes/10.png",
+    imageAlt: "Chicken shawarma wraps",
+    title: "Chicken Shawarma Wraps",
+    detailsHref: "/recipes/chicken-shawarma-wraps",
+  },
+];
 
 export default async function RecipeDetailPage({
   params,
@@ -20,17 +51,22 @@ export default async function RecipeDetailPage({
     notFound();
   }
 
-  const relatedRecipes = recipeDetails
+  const relatedFromData = recipeDetails
     .filter((item) => item.slug !== slug)
     .slice(0, 4)
     .map((item) => ({
       imageSrc: item.heroImages[0],
       imageAlt: item.heroImageAlt,
-      time: item.time,
       title: item.title,
-      description: item.shortDescription,
       detailsHref: `/recipes/${item.slug}`,
     }));
+
+  const relatedRecipes =
+    relatedFromData.length > 0
+      ? relatedFromData
+      : YOU_MAY_ALSO_LIKE_FALLBACK.filter(
+          (item) => item.detailsHref !== `/recipes/${slug}`,
+        ).slice(0, 4);
 
   return (
     <main className="min-h-screen bg-white">
@@ -57,14 +93,24 @@ export default async function RecipeDetailPage({
       />
 
       {relatedRecipes.length > 0 && (
-        <RecipeSection
-          title="MORE RECIPES"
+        <YouMayAlsoLike
+          title="YOU MAY ALSO LIKE"
           viewAllText="VIEW ALL"
           viewAllHref="/our-recipes"
-          featuredText="Featured"
-          recipes={relatedRecipes}
+          items={relatedRecipes}
         />
       )}
+      <MediaBanner
+        subtitle="CREAMY. CONSISTENT. TRUSTED."
+        title="SRI LANKA'S LEADING MAYONNAISE BRAND"
+        text="For decades, Edinborough has been the trusted choice for households, restaurants, and food service professionals across Sri Lanka."
+        buttonText="Explore Products"
+        buttonHref="/products"
+        imageSrc="/images/home/mayonnaiseBanner.png"
+        imageAlt="Edinborough Mayonnaise bottles and pouch with a burger and fresh eggs"
+        layout="split"
+        showGradient={true}
+      />
 
       <FeatureRow
         items={[
